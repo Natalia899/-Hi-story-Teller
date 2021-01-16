@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'mobx-react'
+
+import { EventsStore as eventsStores } from '../src/stores/EventStores'
+
+let EventsStore = new eventsStores()
+
+const stores = {
+  EventsStore
+}
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider {...stores}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
