@@ -3,6 +3,9 @@ const Schema = mongoose.Schema
 
 const eventSchema = new Schema({
     title: String,
+    startDate: Number,
+    endDate: Number,
+    countries: [],
     images: [],
     description: String,
     approved: Boolean
