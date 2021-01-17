@@ -16,7 +16,7 @@ export class EventsStore {
     }
 
     setDateRange = (val) => {
-        console.log(this.dateRange)
+        // console.log(this.dateRange)
         this.dateRange = val
     }
 
