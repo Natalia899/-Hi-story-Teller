@@ -4,7 +4,7 @@ import axios from 'axios'
 export class EventsStore {
     constructor() {
         this.events = []
-        this.user = ''
+        this.user = {}
         this.dateRange = [0, 300]
 
         makeObservable(this, {
@@ -16,7 +16,7 @@ export class EventsStore {
     }
 
     setDateRange = (val) => {
-        console.log(this.dateRange)
+        //console.log(this.dateRange)
         this.dateRange = val
     }
 
