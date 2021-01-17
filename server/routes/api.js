@@ -39,20 +39,20 @@ router.get('/events/:start/:end/:country', async (req, res) => {
     let events = await Event.find({countries: { $in: [`${country}`] }, startDate: {$gte: `${start}`}, endDate: { $lte: `${end}` }}).exec()
     res.send(events)
 })
-// router.post('/event', async (req, res) => {
-//     // add new event  - need to receive an object with : 
-//     // eventTitle
-//     // Images
-//     // Description
-//     // Dates
-//     // Countries
-// })
 
-// router.post('/signUp/:userName/:password', async (req, res) => {
-//     //add new user
-// })
+router.post('/event', async (req, res) => {
+    const newEvent = new Event ({... req.body, approved: false})
+    newEvent.save()
+    res.send(newEvent)
+})
 
-// router.get('/logIn/:userName/passWord', async (req, res) => {
+router.post('/signUp', async (req, res) => {
+    const newUser = new User ({... req.body, type: 'guest'})
+    newUser.save()
+    res.send(newUser)
+})
+
+// router.get('/logIn', async (req, res) => {
 //     // user log in
 // } )
 
