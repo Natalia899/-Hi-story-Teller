@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'mobx-react'
 
-import { EventsStore as eventsStores } from '../src/stores/EventStores'
+import { EventsStore as eventsStores } from '../src/stores/EventStore'
 
 let EventsStore = new eventsStores()
 

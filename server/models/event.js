@@ -6,7 +6,7 @@ const eventSchema = new Schema({
     startDate: Number,
     endDate: Number,
     countries: [],
-    images: [],
+    gallery: [],
     description: String,
     approved: Boolean
 })
