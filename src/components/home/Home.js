@@ -2,6 +2,7 @@
 import TimeLine from './TimeLine'
 
 import NavBar from '../navBar/NavBar'
+import {MyGlobe} from './WorldMap'
 
 
 export function Home(){
@@ -10,6 +11,9 @@ export function Home(){
         <div>
             <div>
                 <NavBar />
+            </div>
+            <div>
+                <MyGlobe />
             </div>
             <div>
                 <TimeLine />
