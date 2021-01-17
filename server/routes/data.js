@@ -1,6 +1,6 @@
 const data = [
 	{
-		title: "World War 1",
+		title: "World War 1, 7/28/1914 - 11/11/1918 ",
 		description: `World War I, also known as the Great War, began in 1914 after the assassination of
 			Archduke Franz Ferdinand of Austria. His murder catapulted into a war across Europe
 			that lasted until 1918. During the conflict, Germany, Austria-Hungary, Bulgaria and 
@@ -9,8 +9,8 @@ const data = [
 			technologies and the horrors of trench warfare, World War I saw unprecedented levels of
 			carnage and destruction. By the time the war was over and the Allied Powers claimed victory,
 			more than 16 million people—soldiers and civilians alike—were dead.`,
-		startDate: "7/28/1914",
-		endDate: "11/11/1918",
+		startDate: 1914,
+		endDate: 1918,
 		countries: [
 			"Turkey ",
 			"Germany",
@@ -47,7 +47,7 @@ const data = [
 		],
 	},
 	{
-		title: "World War 2",
+		title: "World War 2, 8/1/1939 - 8/2/1945",
 		description: `The instability created in Europe by the First World War (1914-18) set the stage
 		for another international conflict—World War II—which broke out two decades later and would
 		prove even more devastating. Rising to power in an economically and politically unstable Germany,
@@ -57,8 +57,8 @@ const data = [
 		the next six years, the conflict would take more lives and destroy more land and property around the globe
 		than any previous war. Among the estimated 45-60 million people killed were 6 million Jews murdered in Nazi
 		concentration camps as part of Hitler’s diabolical “Final Solution,” now known as the Holocaust.`,
-		startDate: "8/1/1939",
-		endDate: "8/2/1945",
+		startDate: 1939,
+		endDate: 1945,
 		countries: ["Germany", "Britain", "France", "Poland", "Italy", "Japan"],
 		gallery: [
 			{
@@ -89,7 +89,7 @@ const data = [
 		],
 	},
 	{
-		title: "World Trade Center",
+		title: "World Trade Center, 8/11/2001 - 8/11/2001",
 		description: `The iconic twin towers of downtown Manhattan’s World Trade Center were a triumph of human
 		imagination and will. Completed in 1973, the towers stood at 110 stories each, accommodating 50,000 workers
 		and 200,000 daily visitors in 10 million square feet of space. They were the hub of the bustling Financial
@@ -97,9 +97,9 @@ const data = [
 		and the future. On September 11, 2001, the World Trade Center became the target of a massive terrorist attack
 		that took the lives of nearly 3,000 people. The disaster also radically altered the skyline of New York City, 
 		destroying the twin columns of glass and steel that over the years had come to embody the city itself.`,
-		startDate: "8/11/2001",
-		endDate: "8/11/2001",
-		countries: ["America"],
+		startDate: 2001,
+		endDate: 2001,
+		countries: ["USA"],
 		gallery: [
 			{
 				imageTitle: "Sky photography World Trade Center",
@@ -124,7 +124,7 @@ const data = [
 		],
 	},
 	{
-		title: "Football",
+		title: "Football, 1/1/1900",
 		description: `The history of football:
 		Football (or soccer as the game is called in some parts of the world)
 		has a long history. Football in its current form arose in England in 
@@ -148,8 +148,8 @@ const data = [
 		It was the Roman culture that would bring football to the British island (Britannica).
 		It is, however, uncertain in which degree the British people were influenced by this
 		variety and in which degree they had developed their own variants.`,
-		startDate: "1/1/1900",
-		endDate: "today",
+		startDate: 1900,
+		endDate: 2021,
 		countries: ["England"],
 		gallery: [
 			{
@@ -174,7 +174,7 @@ const data = [
 		],
 	},
 	{
-		title: "Basketball",
+		title: "Basketball, 1/1/1891 - today",
 		description: `Basketball is one of the few sports whose exact origin is definitely
 		known. In the winter of 1891–1892, Dr. James Naismith, an instructor in the YMCA
 		Training College (now Springfield College) at Springfield, Mass., deliberately 
@@ -188,9 +188,9 @@ const data = [
 		players became optional, depending upon the size of the available court, but the five-player
 		standard was adopted when the game spread over the country. U.S. soldiers brought basketball
 		to Europe in World War I, and it soon became a worldwide sport.`,
-		startDate: "1/1/1891",
-		endDate: "today",
-		countries: ["United States"],
+		startDate: 1891,
+		endDate: 2021,
+		countries: ["USA"],
 		gallery: [
 			{
 				imageTitle: "Basketball",
@@ -215,7 +215,7 @@ const data = [
 		],
 	},
 	{
-		title: "Bitcoin",
+		title: "Bitcoin, 8/18/2008",
 		description: `Bitcoin is a digital currency created in January 2009 following
 		the housing market crash. It follows the ideas set out in a whitepaper by the
 		mysterious and pseudonymous Satoshi Nakamoto.1﻿ The identity of the person or
@@ -230,9 +230,9 @@ const data = [
 		tender, Bitcoin charts high on popularity, and has triggered the launch of hundreds of
 		other virtual currencies collectively referred to as Altcoins.
 		the bitcion today equals to $19,425,366.26`,
-		startDate: "8/18/2008",
-		endDate: "today",
-		countries: ["United States"],
+		startDate: 2008,
+		endDate: 2021,
+		countries: ["USA"],
 		gallery: [
 			{
 				imageTitle: "Bitcoin ",
@@ -257,7 +257,7 @@ const data = [
 		],
 	},
 	{
-		title: "Stock Market",
+		title: "Stock Market, 1/1/1611",
 		description: `It was in 12th century France that the ‘Courretiers de change’
 		took on the task of managing and regulating agricultural communities debt.
 		This was on behalf of the french banks of that time. This group of men traded
@@ -301,9 +301,9 @@ const data = [
 		and the worlds largest are in the United States of America, as well as in
 		the United Kingdom, China, Canada, India, Japan, Germany, France, Netherlands 
 		and South Korea.`,
-		startDate: "1/1/1611",
-		endDate: "today",
-		countries: ["Netherlands", "United States"],
+		startDate: 1611,
+		endDate: 2021,
+		countries: ["Netherlands", "USA"],
 		gallery: [
 			{
 				imageTitle: "Stock Market",
@@ -328,7 +328,7 @@ const data = [
 		],
 	},
 	{
-		title: "Titanic",
+		title: "Titanic, 5/31/1911 - 4/14/1912",
 		description: `RMS Titanic:
 		The RMS Titanic, a luxury steamship, sank in the early hours of April 15, 1912, off the coast of Newfoundland 
 		in the North Atlantic after sideswiping an iceberg during its maiden voyage. Of the 2,240 passengers and crew 
@@ -344,8 +344,8 @@ const data = [
 		Cunard’s Mauretania began service in 1907 and quickly set a speed record for the
 		fastest average speed during a transatlantic crossing (23.69 knots or 27.26 mph),
 		a title that it held for 22 years.`,
-		startDate: "5/31/1911",
-		endDate: "4/14/1912",
+		startDate: 1911,
+		endDate: 1912,
 		countries: ["Britain", "Ireland"],
 		gallery: [
 			{
@@ -370,7 +370,7 @@ const data = [
 		],
 	},
 	{
-		title: "French Revolution",
+		title: "French Revolution, 5/5/1789 - 11/9/1799",
 		description: `The French Revolution was a watershed event in modern European history that
 		began in 1789 and ended in the late 1790s with the ascent of Napoleon Bonaparte. During
 		this period, French citizens razed and redesigned their country’s political landscape, 
@@ -380,8 +380,8 @@ const data = [
 		Antoinette. Although it failed to achieve all of its goals and at times degenerated into
 		a chaotic bloodbath, the French Revolution played a critical role in shaping modern nations
 		by showing the world the power inherent in the will of the people.`,
-		startDate: "5/5/1789",
-		endDate: "11/9/1799",
+		startDate: 1789,
+		endDate: 1799,
 		countries: ["French", "Britannia"],
 		gallery: [
 			{
@@ -407,7 +407,7 @@ const data = [
 		],
 	},
 	{
-		title: "Israel's War of Independence",
+		title: "Israel's War of Independence, 11/30/1947 - 7/20/1949",
 		description: `In December 1946 - at the first post-war Zionist Congress in Basle
 		- David Ben Gurion assumed the defense portfolio, including responsibility for
 		the Haganah, which at the time concentrated on the struggle against the British.
@@ -501,8 +501,8 @@ const data = [
 		by Egyptian Intelligence, although they operated mainly from bases in Jordan, so that Jordan would bear the brunt of Israel's retaliation,
 		which inevitably followed. And each time Israel retaliated, the Security Council condemned it; condemnation of an Arab government had long
 		since become an impossibility, because of the Soviet veto.`,
-		startDate: "11/30/1947",
-		endDate: "7/20/1949",
+		startDate: 1947,
+		endDate: 1949,
 		countries: ["Israel", "Egypt", "Syria", "Iraq", "Lebanon", "Saudi Arabia"],
 		gallery: [
 			{
@@ -528,3 +528,5 @@ const data = [
 		],
 	},
 ];
+
+module.exports = data
