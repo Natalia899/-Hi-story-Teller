@@ -8,7 +8,8 @@ const eventSchema = new Schema({
     countries: [],
     gallery: [],
     description: String,
-    approved: Boolean
+    approved: Boolean,
+    discussion: []
 })
 
 const Event = mongoose.model('event', eventSchema)
