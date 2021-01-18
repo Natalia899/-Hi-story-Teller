@@ -7,6 +7,9 @@ export class EventsStore {
         this.user = null
         this.dateRange = [1600, 2000]
 
+
+
+
         makeObservable(this, {
             events: observable,
             user: observable,
@@ -16,7 +19,6 @@ export class EventsStore {
     }
 
     setDateRange = (val) => {
-        // console.log(this.dateRange)
         this.dateRange = val
     }
 

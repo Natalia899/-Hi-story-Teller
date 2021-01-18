@@ -1,30 +1,17 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-
-import {Drawer, CssBaseline, AppBar, Toolbar, List, Divider, IconButton, ListItem, ListItemIcon, ListItemText,} from '@material-ui/core';
-// import Drawer from '@material-ui/core/Drawer';
-// import CssBaseline from '@material-ui/core/CssBaseline';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import List from '@material-ui/core/List';
-// import Typography from '@material-ui/core/Typography';
-// import Divider from '@material-ui/core/Divider';
-// import IconButton from '@material-ui/core/IconButton';
+import { Drawer, CssBaseline, AppBar, Toolbar, List, Divider, IconButton, ListItem, ListItemIcon, ListItemText, } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-// import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
 import HelpIcon from '@material-ui/icons/Help';
 import AddIcon from '@material-ui/icons/Add';
 import { inject, observer } from 'mobx-react'
-
 import InfoIcon from '@material-ui/icons/Info';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import ListIcon from '@material-ui/icons/List';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
+
 
 const drawerWidth = 240;
 
@@ -97,6 +84,7 @@ const NavBar = inject("EventsStore")(observer((props) => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -152,7 +140,8 @@ const NavBar = inject("EventsStore")(observer((props) => {
                         </ListItem>
                     </Link>
 
-                    <Link to='/addSuggestion'>
+
+                    <Link to='/AddSuggestion'>
                         <ListItem button key='AddSuggestion'>
                             <ListItemIcon>
                                 <AddIcon />
@@ -160,6 +149,7 @@ const NavBar = inject("EventsStore")(observer((props) => {
                             <ListItemText primary='AddSuggestion' />
                         </ListItem>
                     </Link>
+
                     <Link to='/'>
                         <ListItem button key='Login'>
                             <ListItemIcon>
@@ -169,6 +159,7 @@ const NavBar = inject("EventsStore")(observer((props) => {
                         </ListItem>
                     </Link>
                     {props.EventsStore.user && props.EventsStore.user.type === 'admin' ? <Link to='/SuggestionsList'>
+
                         <ListItem button key='SuggestionsList'>
                             <ListItemIcon>
                                 <ListIcon />
