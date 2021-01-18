@@ -32,7 +32,7 @@ let user2 = new User({
 })
 
 const usersDB = [user1, user2]
-//usersDB.forEach(u=> u.save())
+// usersDB.forEach(u=> u.save())
 
 router.get('/events/:start/:end/:country', async (req, res) => {
     const { start, end, country } = req.params
@@ -52,9 +52,10 @@ router.post('/signUp', async (req, res) => {
     res.send(newUser)
 })
 
-router.get('/logIn', async (req, res) => {
+router.post('/login', async (req, res) => {
     const { username, password } = req.body
-    let relUser = await User.find({ username: `${username}`, password: `${password}` })
+    console.log(req.body)
+    let relUser = await User.findOne({ username, password})
     res.send(relUser)
 })
 

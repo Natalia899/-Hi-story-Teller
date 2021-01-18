@@ -3,8 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 
-export default function About() {
+export default function Support() {
   return (
-   < div>About</div>
+   < div>Support</div>
   );
 }
