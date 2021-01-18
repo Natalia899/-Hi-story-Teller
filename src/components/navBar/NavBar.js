@@ -9,7 +9,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import HelpIcon from '@material-ui/icons/Help';
 import AddIcon from '@material-ui/icons/Add';
 import { inject, observer } from 'mobx-react'
-
+import VpnKeyIcon from '@material-ui/icons/VpnKey'
 import InfoIcon from '@material-ui/icons/Info';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import ListIcon from '@material-ui/icons/List';
