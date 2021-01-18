@@ -60,8 +60,8 @@ const classes = useStyles();
 
 const addNewUser = async ()=>{
   let newUser = {username, password}
-  let add = await axios.post("http://localhost:4200/signup", newUser)
-
+ await axios.post("http://localhost:4200/signup", newUser)
+ window.location.href  = "http://localhost:3000/"
 }
 
   return (

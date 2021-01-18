@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = inject("EventsStore")(observer((props) => {
-
+console.log(props.EventsStore.user)
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -163,8 +163,6 @@ const NavBar = inject("EventsStore")(observer((props) => {
                         </ListItem>
                     </Link>
                     {props.EventsStore.user && props.EventsStore.user.type === 'admin' ? <Link to='/SuggestionsList'>
-
-
                         <ListItem button key='SuggestionsList'>
                             <ListItemIcon>
                                 <ListIcon />
