@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+
 import { Drawer, CssBaseline, AppBar, Toolbar, List, Divider, IconButton, ListItem, ListItemIcon, ListItemText, } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -8,6 +9,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import HelpIcon from '@material-ui/icons/Help';
 import AddIcon from '@material-ui/icons/Add';
 import { inject, observer } from 'mobx-react'
+
 import InfoIcon from '@material-ui/icons/Info';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import ListIcon from '@material-ui/icons/List';
@@ -73,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = inject("EventsStore")(observer((props) => {
+
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -150,6 +153,7 @@ const NavBar = inject("EventsStore")(observer((props) => {
                         </ListItem>
                     </Link>
 
+
                     <Link to='/'>
                         <ListItem button key='Login'>
                             <ListItemIcon>
@@ -159,6 +163,7 @@ const NavBar = inject("EventsStore")(observer((props) => {
                         </ListItem>
                     </Link>
                     {props.EventsStore.user && props.EventsStore.user.type === 'admin' ? <Link to='/SuggestionsList'>
+
 
                         <ListItem button key='SuggestionsList'>
                             <ListItemIcon>

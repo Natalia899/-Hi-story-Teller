@@ -179,7 +179,7 @@ export default [
 	{ id: 176, value:176, coordinates: [46.941936, -56.27111], country: `Saint Pierre and Miquelon` },
 	{ id: 177, value:177, coordinates: [-24.703615, -127.439308], country: `Pitcairn Islands` },
 	{ id: 178, value:178, coordinates: [18.220833, -66.590149], country: `Puerto Rico` },
-	{ id: 179, value:179, coordinates: [31.952162, 35.233154], country: `Palestinian` },
+	{ id: 179, value:179, coordinates: [31.952162, 35.233154], country: `Palestin` },
 	{ id: 180, value:180, coordinates: [39.399872, -8.224454], country: `Portugal` },
 	{ id: 181, value:181, coordinates: [7.51498, 134.58252], country: `Palau` },
 	{ id: 182, value:182, coordinates: [-23.442503, -58.443832], country: `Paraguay` },

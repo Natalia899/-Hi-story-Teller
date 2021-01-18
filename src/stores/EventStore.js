@@ -1,11 +1,13 @@
-import { observable, computed, action, makeObservable } from 'mobx'
-import axios from 'axios'
+import { observable, computed, action, makeObservable } from "mobx";
 
 export class EventsStore {
+
+	
     constructor() {
         this.events = []
         this.user = null
         this.dateRange = [1600, 2000]
+        this.countries = [];
 
 
 
@@ -14,7 +16,8 @@ export class EventsStore {
             events: observable,
             user: observable,
             dateRange: observable,
-            setDateRange: action
+            setDateRange: action,
+            countries: observable
         })
     }
 
@@ -35,4 +38,3 @@ export class EventsStore {
         
     }
 }
-
