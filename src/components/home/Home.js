@@ -17,7 +17,8 @@ export function Home(){
             </div>
             <div>
                 <TimeLine />
-            </div>  
+            </div> 
+        
         </div>
     )
 }

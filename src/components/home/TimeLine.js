@@ -68,7 +68,7 @@ function TimeLine(props) {
     return `${value}`;
   }
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (newValue) => {
     props.EventsStore.setDateRange(newValue)
   };
 

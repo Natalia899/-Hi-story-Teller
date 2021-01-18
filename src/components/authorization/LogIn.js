@@ -13,17 +13,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { inject, observer } from 'mobx-react';
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'©Elevation Academy - DreamTeam '}
-            {/*<Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-    {'.'}*/}
         </Typography>
     );
 }
@@ -59,23 +54,7 @@ function Login(props) {
     const userLogin = async () => {
         console.log(username, password)
         await props.EventsStore.userLogin({ username, password })
-        if(props.EventsStore.user){
-            window.location.href  = "http://localhost:3001/home"
-        }else{
-            console.log("Not a real user")
-        }
     }
-
-    const toChangePage = () => {
-        if (props.EventsStore.user) {
-            console.log("in home")
-            return "/home"
-        } else {
-            console.log("in log in")
-            return "/"
-        }
-    }
-
 
     return (
         <Container component="main" maxWidth="xs">
@@ -112,10 +91,6 @@ function Login(props) {
                         autoComplete="current-password"
                         onChange={(event) => setPassword(event.target.value)}
                     />
-                    {/*<FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-            />*/}
                     <Button
                         fullWidth
                         variant="contained"
@@ -124,13 +99,8 @@ function Login(props) {
                     >
                         Sign In
                     </Button>
-
+                    {props.EventsStore.user ? <Redirect to="/home" /> : null}
                     <Grid container>
-                        {/*<Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>*/}
                         <Grid item>
                             <Link href="/signup" variant="body2">
                                 {"Don't have an account? Sign Up"}
