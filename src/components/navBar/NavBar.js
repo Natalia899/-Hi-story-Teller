@@ -12,6 +12,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import ListIcon from '@material-ui/icons/List';
 
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = inject("EventsStore")(observer((props) => {
-    console.log(props)
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -84,7 +84,7 @@ const NavBar = inject("EventsStore")(observer((props) => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
-    console.log(props)
+
     return (
         <div className={classes.root}>
             <CssBaseline />
@@ -140,6 +140,7 @@ const NavBar = inject("EventsStore")(observer((props) => {
                         </ListItem>
                     </Link>
 
+
                     <Link to='/AddSuggestion'>
                         <ListItem button key='AddSuggestion'>
                             <ListItemIcon>
@@ -148,7 +149,17 @@ const NavBar = inject("EventsStore")(observer((props) => {
                             <ListItemText primary='AddSuggestion' />
                         </ListItem>
                     </Link>
-                    {props.EventsStore.user.type === 'admin' ? <Link to='/SuggestionsList'>
+
+                    <Link to='/'>
+                        <ListItem button key='Login'>
+                            <ListItemIcon>
+                                <VpnKeyIcon />
+                            </ListItemIcon>
+                            <ListItemText primary='Login' />
+                        </ListItem>
+                    </Link>
+                    {props.EventsStore.user && props.EventsStore.user.type === 'admin' ? <Link to='/SuggestionsList'>
+
                         <ListItem button key='SuggestionsList'>
                             <ListItemIcon>
                                 <ListIcon />

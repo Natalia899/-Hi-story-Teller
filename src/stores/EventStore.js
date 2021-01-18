@@ -4,8 +4,11 @@ import axios from 'axios'
 export class EventsStore {
     constructor() {
         this.events = []
-        this.user = {}
-        this.dateRange = [0, 300]
+        this.user = null
+        this.dateRange = [1600, 2000]
+
+
+
 
         makeObservable(this, {
             events: observable,
@@ -16,9 +19,20 @@ export class EventsStore {
     }
 
     setDateRange = (val) => {
-        //console.log(this.dateRange)
         this.dateRange = val
     }
 
+    userLogin = async (user) => {
+        console.log(user)
+        const data = await axios.post("http://localhost:4200/login", user)
+        console.log(data.data)
+        if(data.data){
+            this.user = data.data
+            console.log(this.user)
+        }else{
+            
+        }
+        
+    }
 }
 
