@@ -101,5 +101,11 @@ router.put('/comment/:id', async (req, res) => {
     // res.send(relEvent[0].discussion)
 })
 
+router.get('/suggestions', async (req, res) => {
+    let suggestions = await Event.find({approved: false}).exec()
+    res.send(suggestions)
+})
+
+
 
 module.exports = router

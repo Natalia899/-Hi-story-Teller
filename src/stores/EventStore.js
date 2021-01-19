@@ -23,14 +23,12 @@ export class EventsStore {
     }
 
     userLogin = async (user) => {
-        console.log(user)
         const data = await axios.post("http://localhost:4200/login", user)
-        console.log(data.data)
         if(data.data){
             this.user = data.data
             console.log(this.user)
         }else{
-            
+           alert('username or password is not correct') 
         }
         
     }
