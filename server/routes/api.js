@@ -34,17 +34,16 @@ let user2 = new User({
 const usersDB = [user1, user2]
 // usersDB.forEach(u=> u.save())
 
-router.post('/events/:start/:end', async (req, res) => {
-    const { countries } = req.body
-    const {start, end} = req.params
+router.post('/events', async (req, res) => {
+    const { countries, startDate, endDate} = req.body
     const events = []
     for(let country of countries){
         await Event.find({ 
             countries: { $in: [`${country}`] },
-            startDate: { $gte: `${start}` },
-            endDate: { $lte: `${end}` } })
+            startDate: { $gte: `${startDate}` },
+            endDate: { $lte: `${endDate}` } })
             .then(response => {
-                arr.push(response)
+                events.push(response)
             })
     }
     

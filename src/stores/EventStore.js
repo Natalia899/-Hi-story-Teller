@@ -11,10 +11,12 @@ export class EventsStore {
 
         makeObservable(this, {
             events: observable,
+            eventsRender: action,
             user: observable,
             dateRange: observable,
             setDateRange: action,
-            countries: observable
+            countries: observable,
+            addCountriesToStore: action
         })
     }
 
@@ -26,10 +28,29 @@ export class EventsStore {
         const data = await axios.post("http://localhost:4200/login", user)
         if(data.data){
             this.user = data.data
-            console.log(this.user)
         }else{
            alert('username or password is not correct') 
         }
         
+    }
+
+    addCountriesToStore = (country) => {
+        this.countries.push(country);
+        console.log(this.countries)
+    };
+
+    eventsRender = async () => {
+        const countries = this.countries
+        const startDate = this.dateRange[0]
+        const endDate = this.dateRange[1]
+        const eventsData = {startDate, endDate, countries}
+        let data = await axios.post("http://localhost:4200/events", eventsData)
+        data = data.data
+        for(let i of data){
+            for(let j of i){
+                this.events.push(j)
+            }
+        }
+        console.log(this.events)
     }
 }
