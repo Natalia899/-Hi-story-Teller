@@ -4,7 +4,6 @@ const router = express.Router()
 const Event = require("../models/event")
 const User = require("../models/user")
 const data = require('./data')
-//console.log(data);
 
 // data.forEach(event=> {
 //     let newEvent = new Event({
@@ -14,7 +13,7 @@ const data = require('./data')
 //         countries: event.countries,
 //         gallery: event.gallery,
 //         description: event.description,
-//         approved: true
+//         approved: false
 //     })
 //     newEvent.save()
 // })
