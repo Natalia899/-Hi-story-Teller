@@ -30,8 +30,9 @@ export const MyGlobe = inject("EventsStore")(
 			props.EventsStore.countries = [];
 		};
 		const addCountriesToStore = (marker) => {
-			props.EventsStore.countries.push(marker.country);
-			console.log(props.EventsStore.countries);
+
+			props.EventsStore.addCountriesToStore(marker.country);
+
 		};
 
 		const findCoordinates = () => {
