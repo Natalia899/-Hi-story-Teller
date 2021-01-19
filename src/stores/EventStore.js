@@ -1,13 +1,12 @@
 import { observable, computed, action, makeObservable } from "mobx";
-import axios from 'axios'
+import axios from "axios";
 export class EventsStore {
-
-	
-    constructor() {
-        this.events = []
-        this.user = null
-        this.dateRange = [1600, 2000]
-        this.countries = [];
+	constructor() {
+		this.events = [];
+		this.user = null;
+		this.dateRange = [1600, 2000];
+		this.countries = [];
+		this.currentSuggestion = {};
 
         makeObservable(this, {
             events: observable,
@@ -16,7 +15,9 @@ export class EventsStore {
             dateRange: observable,
             setDateRange: action,
             countries: observable,
-            addCountriesToStore: action
+            addCountriesToStore: action,
+          currentSuggestion: observable,
+            currentSuggestionFunction:action
         })
     }
 
@@ -34,6 +35,10 @@ export class EventsStore {
         
     }
 
+    currentSuggestionFunction = (suggestion) => {
+        console.log(suggestion)
+        this.currentSuggestion = suggestion
+    }
     addCountriesToStore = (country) => {
         this.countries.push(country);
         console.log(this.countries)
