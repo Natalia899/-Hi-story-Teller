@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
  function SignUp(props) {
-console.log(props)
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
    
