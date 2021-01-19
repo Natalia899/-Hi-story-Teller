@@ -4,7 +4,6 @@ const router = express.Router()
 const Event = require("../models/event")
 const User = require("../models/user")
 const data = require('./data')
-//console.log(data);
 
 // data.forEach(event=> {
 //     let newEvent = new Event({
@@ -14,7 +13,7 @@ const data = require('./data')
 //         countries: event.countries,
 //         gallery: event.gallery,
 //         description: event.description,
-//         approved: true
+//         approved: false
 //     })
 //     newEvent.save()
 // })
@@ -89,6 +88,12 @@ router.put('/comment/:id', async (req, res) => {
     // await relEvent[0].save()
     // res.send(relEvent[0].discussion)
 })
+
+router.get('/suggestions', async (req, res) => {
+    let suggestions = await Event.find({approved: false}).exec()
+    res.send(suggestions)
+})
+
 
 
 module.exports = router
