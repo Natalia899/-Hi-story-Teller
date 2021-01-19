@@ -3,7 +3,7 @@ import TimeLine from './TimeLine'
 
 import NavBar from '../navBar/NavBar'
 import {MyGlobe} from './WorldMap'
-
+import HomeButton from './HomeButton'
 
 export function Home(){
 
@@ -17,8 +17,10 @@ export function Home(){
             </div>
             <div>
                 <TimeLine />
-            </div> 
-        
+            </div>
+            <div>
+                <HomeButton />
+            </div>
         </div>
     )
 }
