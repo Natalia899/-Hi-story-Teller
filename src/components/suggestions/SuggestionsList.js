@@ -10,6 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { observer, inject } from "mobx-react";
 import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 const useStyles = makeStyles({
 	table: {
 		minWidth: 650,
@@ -38,7 +39,7 @@ const SuggestionsList = inject("EventsStore")(
 		return (
 			<div>
 				<Link to='/home'>
-					<button>Home</button>
+					<Button>Home</Button>
 				</Link>
 				<TableContainer component={Paper}>
 					<Table className={addStyleTo.table} aria-label='simple table'>

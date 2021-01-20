@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
@@ -17,11 +18,11 @@ const VerifySuggest = inject("EventsStore")(
 		console.log(suggestion);
 
 		const handleInputChange = ({ target }) => {
-			let obj = {...suggestion};
+			let obj = { ...suggestion };
 			if (target.name === "startDate" || target.name === "endDate") {
 				console.log(Number(target.value));
 				obj[target.name] = Number(target.value);
-			}else{
+			} else {
 				obj[target.name] = target.value;
 			}
 			setSuggestion(obj);
@@ -79,10 +80,27 @@ const VerifySuggest = inject("EventsStore")(
 								<input type='file' />
 								<button>Upload</button>
 							</div>
-							<div>
-								<Button variant='contained'>Send</Button>
-							</div>
-							<button onClick={() => console.log(suggestion)}>Print</button>
+							<div></div>
+							<Link to='/suggestionsList'>
+								<Button
+									onClick={() =>
+										props.EventsStore.approveSuggestion(
+											suggestion._id
+										)
+									}
+								>
+									APPROVE
+								</Button>
+							</Link>
+							<Link to='/suggestionsList'>
+								<Button
+									onClick={() =>
+										props.EventsStore.deleteSuggestion(suggestion._id)
+									}
+								>
+									Reject
+								</Button>
+							</Link>
 						</div>
 					</Container>
 				</React.Fragment>
