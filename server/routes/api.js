@@ -1,53 +1,52 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const Event = require("../models/event")
-const User = require("../models/user")
-const data = require('./data')
-//console.log(data);
+const Event = require("../models/event");
+const User = require("../models/user");
+const data = require("./data");
 
-// data.forEach(event=> {
-//     let newEvent = new Event({
-//         title: event.title,
-//         startDate: event.startDate,
-//         endDate: event.endDate,
-//         countries: event.countries,
-//         gallery: event.gallery,
-//         description: event.description,
-//         approved: true
-//     })
-//     newEvent.save()
-// })
+// data.forEach((event) => {
+// 	let newEvent = new Event({
+// 		userName: event.userName,
+// 		title: event.title,
+// 		startDate: event.startDate,
+// 		endDate: event.endDate,
+// 		countries: event.countries,
+// 		gallery: event.gallery,
+// 		description: event.description,
+// 		approved: false,
+// 	});
+// 	newEvent.save();
+// });
 
 let user1 = new User({
-    username: "Ben",
-    password: "1234",
-    type: 'admin'
-})
+	username: "Ben",
+	password: "1234",
+	type: "admin",
+});
 
 let user2 = new User({
-    username: "Rose",
-    password: "9874",
-    type: 'guest'
-})
+	username: "Rose",
+	password: "9874",
+	type: "guest",
+});
 
-const usersDB = [user1, user2]
+const usersDB = [user1, user2];
 // usersDB.forEach(u=> u.save())
 
-router.post('/events/:start/:end', async (req, res) => {
-    const { countries } = req.body
-    const {start, end} = req.params
+router.post('/events', async (req, res) => {
+    const { countries, startDate, endDate} = req.body
     const events = []
     for(let country of countries){
         await Event.find({ 
+            approved: true,
             countries: { $in: [`${country}`] },
-            startDate: { $gte: `${start}` },
-            endDate: { $lte: `${end}` } })
+            startDate: { $gte: `${startDate}` },
+            endDate: { $lte: `${endDate}` } })
             .then(response => {
-                arr.push(response)
+                events.push(response)
             })
     }
-    
     res.send(events)
 })
 
@@ -109,3 +108,4 @@ router.get('/suggestions', async (req, res) => {
 
 
 module.exports = router
+
