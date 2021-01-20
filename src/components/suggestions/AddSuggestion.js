@@ -1,70 +1,79 @@
 import React, { useState, useEffect } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
+import { CssBaseline, Container, TextField, Grid, Button } from '@material-ui/core';
 import 'date-fns';
-import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-import Moment from 'react-moment';
+import { MuiPickersUtilsProvider, KeyboardDatePicker }
+  from '@material-ui/pickers';
 import { inject, observer } from 'mobx-react'
-import Button from '@material-ui/core/Button';
-
-
+import axios from "axios";
 
 function AddSuggestion(props) {
-
   const [selectedStartDate, setStartSelectedDate] = useState(new Date());
   const [selectedEndDate, setEndSelectedDate] = useState(new Date());
-  const [selectedFiles, setSelectedFiles] = useState([])
+  const [selectedFiles, setSelectedFiles] = useState('')
+  const [imageDescription, setImageDescription] = useState('')
+  const [image, setImage] = useState({ imageTitle: '', imageURL: '', id: '' })
+  const [gallery, setGallery] = useState([])
   const [inputs, setInputs] = useState({ title: '', countries: [], description: '', startDate: null, endDate: null })
 
+  const url = 'https://api.cloudinary.com/v1_1/domephsm4/image/upload';
+  const preset = 'natalia';
+
   const handleStartDateChange = (date) => {
-    console.log(date)
     setStartSelectedDate(date);
-    console.log(selectedStartDate)
   };
 
   const handleEndDateChange = (date) => {
-    console.log(date)
     setEndSelectedDate(date);
-    console.log(selectedEndDate)
   };
 
   const fileChangedHandler = ({ target }) => {
-    let tempList = [...selectedFiles]
-    setSelectedFiles(target.files)
+    setSelectedFiles(target.files[0])
   }
 
-  const uploadHandler = () => {
-    console.log(selectedFiles)
+  const uploadHandler = async () => {
+    const formData = new FormData();
+    formData.append('file', selectedFiles);
+    formData.append('upload_preset', preset);
+    try {
+      const res = await axios.post(url, formData);
+      const imageUrl = res.data.secure_url;
+      let tempImage = { ...image }
+      tempImage.imageURL = imageUrl
+      tempImage.imageTitle = imageDescription
+      tempImage.id = res.data.public_id
+      setImage(tempImage)
+    } catch (err) {
+      console.error(err);
+    }
   }
+
+  useEffect(() => {
+    let tempGallery = [...gallery]
+    if (image.imageURL !== '') {
+      tempGallery.push(image)
+      setGallery(tempGallery)
+    }
+  }, [image])
 
   const inputsHandler = ({ target }) => {
     let tempObj = { ...inputs }
     tempObj[target.name] = target.value
     setInputs(tempObj)
-    console.log(inputs)
   }
 
-  const sendNewEvent = () => {
+  const sendNewEvent = async () => {
     let newEvent = {
       title: `${inputs.title}, ${selectedStartDate.toDateString().slice(3)} - ${selectedEndDate.toDateString().slice(3)} `,
       startDate: selectedStartDate.getFullYear(),
       endDate: selectedEndDate.getFullYear(),
       description: inputs.description,
       countries: [inputs.countries],
-      gallery: selectedFiles,
-      //username: props.EventsStore.user.username
+      gallery: gallery,
+      username: props.EventsStore.user.username
     }
-    console.log(newEvent)
-
+    await axios.post('http://localhost:4200/event', newEvent)
   }
-
-
 
   return (
     <React.Fragment>
@@ -107,31 +116,32 @@ function AddSuggestion(props) {
           <div for="w3review">Description</div>
           <textarea name='description' id="w3review" rows="15" cols="80" value={inputs.description} onChange={inputsHandler} />
           <div> Upload images (optional):
-            <div className='uploadImage'>
+          <div className='uploadImage'>
               <input className='uploadFile' type="file" onChange={fileChangedHandler} />
-              <input className='imageDescription' type='text' name='imageDescription' placeholder='describe the image' />
-           
+              <TextField name='title' onChange={({ target }) => setImageDescription(target.value)} id="standard-basic" label="Describe the image" /> <br></br>
+              <Button onClick={uploadHandler} variant="contained">Upload</Button>
             </div>
             <div className='uploadImage'>
               <input className='uploadFile' type="file" onChange={fileChangedHandler} />
-              <input className='imageDescription' type='text' name='imageDescription' placeholder='describe the image' />
-            
+              <TextField name='title' onChange={({ target }) => setImageDescription(target.value)} id="standard-basic" label="Describe the image" /> <br></br>
+              <Button onClick={uploadHandler} variant="contained">Upload</Button>
             </div>
             <div className='uploadImage'>
               <input className='uploadFile' type="file" onChange={fileChangedHandler} />
-              <input className='imageDescription' type='text' name='imageDescription' placeholder='describe the image' />
-             
+              <TextField name='title' onChange={({ target }) => setImageDescription(target.value)} id="standard-basic" label="Describe the image" /> <br></br>
+              <Button onClick={uploadHandler} variant="contained">Upload</Button>
             </div>
             <div className='uploadImage'>
               <input className='uploadFile' type="file" onChange={fileChangedHandler} />
-              <input className='imageDescription' type='text' name='imageDescription' placeholder='describe the image' />
-            <Button onClick={uploadHandler} variant="contained">Upload</Button>
+              <TextField name='title' onChange={({ target }) => setImageDescription(target.value)} id="standard-basic" label="Describe the image" /> <br></br>
+              <Button onClick={uploadHandler} variant="contained">Upload</Button>
+              {/* <Button variant="contained" component="label" > Upload File <input type="file" hidden/>
+               </Button> */}
             </div>
           </div>
-          <div><Button onClick={sendNewEvent} variant="contained">Send</Button></div>
+          <div>
+            <Button onClick={sendNewEvent} variant="contained">Send</Button></div>
         </div>
-
-
       </Container>
     </React.Fragment>
   );
