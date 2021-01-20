@@ -9,7 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { observer, inject } from "mobx-react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 const useStyles = makeStyles({
 	table: {
 		minWidth: 650,
@@ -33,12 +33,15 @@ const SuggestionsList = inject("EventsStore")(
 		};
 
 		console.log(suggestionsList);
-		const classes = useStyles();
+		const addStyleTo = useStyles();
 
 		return (
 			<div>
+				<Link to='/home'>
+					<button>Home</button>
+				</Link>
 				<TableContainer component={Paper}>
-					<Table className={classes.table} aria-label='simple table'>
+					<Table className={addStyleTo.table} aria-label='simple table'>
 						<TableHead>
 							<TableRow>
 								<TableCell>userName</TableCell>
@@ -60,7 +63,7 @@ const SuggestionsList = inject("EventsStore")(
 													currentSuggetstion(row.title)
 												}
 											>
-												Check
+												Check Suggestion
 											</button>
 										</Link>
 									</TableCell>
