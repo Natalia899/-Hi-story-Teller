@@ -36,6 +36,10 @@ function AddSuggestion(props) {
 
   const fileChangedHandler = ({ target }) => {
     let tempList = [...selectedFiles]
+    let newImage= {
+      imageTitle: target.value, 
+      imageURL: target.files
+    }
     setSelectedFiles(target.files)
   }
 
@@ -107,9 +111,9 @@ function AddSuggestion(props) {
           <div for="w3review">Description</div>
           <textarea name='description' id="w3review" rows="15" cols="80" value={inputs.description} onChange={inputsHandler} />
           <div> Upload images (optional):
-            <div className='uploadImage'>
+            {/* <div className='uploadImage'>
               <input className='uploadFile' type="file" onChange={fileChangedHandler} />
-              <input className='imageDescription' type='text' name='imageDescription' placeholder='describe the image' />
+              <input className='imageDescription' type='text' onChange={fileChangedHandler} name='imageDescription' placeholder='describe the image' />
            
             </div>
             <div className='uploadImage'>
@@ -121,7 +125,7 @@ function AddSuggestion(props) {
               <input className='uploadFile' type="file" onChange={fileChangedHandler} />
               <input className='imageDescription' type='text' name='imageDescription' placeholder='describe the image' />
              
-            </div>
+            </div> */}
             <div className='uploadImage'>
               <input className='uploadFile' type="file" onChange={fileChangedHandler} />
               <input className='imageDescription' type='text' name='imageDescription' placeholder='describe the image' />

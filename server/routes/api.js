@@ -4,6 +4,7 @@ const router = express.Router();
 const Event = require("../models/event");
 const User = require("../models/user");
 const data = require("./data");
+const cors = require('cors');
 
 // data.forEach((event) => {
 // 	let newEvent = new Event({
@@ -39,6 +40,7 @@ router.post('/events', async (req, res) => {
     const events = []
     for(let country of countries){
         await Event.find({ 
+            approved: true,
             countries: { $in: [`${country}`] },
             startDate: { $gte: `${startDate}` },
             endDate: { $lte: `${endDate}` } })
