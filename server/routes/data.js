@@ -1,5 +1,6 @@
 const data = [
 	{
+		userName: "Ben",
 		title: "World War 1, 7/28/1914 - 11/11/1918 ",
 		description: `World War I, also known as the Great War, began in 1914 after the assassination of
 			Archduke Franz Ferdinand of Austria. His murder catapulted into a war across Europe
@@ -47,6 +48,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "World War 2, 8/1/1939 - 8/2/1945",
 		description: `The instability created in Europe by the First World War (1914-18) set the stage
 		for another international conflict—World War II—which broke out two decades later and would
@@ -89,6 +91,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "World Trade Center, 8/11/2001 - 8/11/2001",
 		description: `The iconic twin towers of downtown Manhattan’s World Trade Center were a triumph of human
 		imagination and will. Completed in 1973, the towers stood at 110 stories each, accommodating 50,000 workers
@@ -124,6 +127,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "Football, 1/1/1900",
 		description: `The history of football:
 		Football (or soccer as the game is called in some parts of the world)
@@ -174,6 +178,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "Basketball, 1/1/1891 - today",
 		description: `Basketball is one of the few sports whose exact origin is definitely
 		known. In the winter of 1891–1892, Dr. James Naismith, an instructor in the YMCA
@@ -215,6 +220,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "Bitcoin, 8/18/2008",
 		description: `Bitcoin is a digital currency created in January 2009 following
 		the housing market crash. It follows the ideas set out in a whitepaper by the
@@ -257,6 +263,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "Stock Market, 1/1/1611",
 		description: `It was in 12th century France that the ‘Courretiers de change’
 		took on the task of managing and regulating agricultural communities debt.
@@ -328,6 +335,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "Titanic, 5/31/1911 - 4/14/1912",
 		description: `RMS Titanic:
 		The RMS Titanic, a luxury steamship, sank in the early hours of April 15, 1912, off the coast of Newfoundland 
@@ -370,6 +378,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "French Revolution, 5/5/1789 - 11/9/1799",
 		description: `The French Revolution was a watershed event in modern European history that
 		began in 1789 and ended in the late 1790s with the ascent of Napoleon Bonaparte. During
@@ -407,6 +416,7 @@ const data = [
 		],
 	},
 	{
+		userName: "Ben",
 		title: "Israel's War of Independence, 11/30/1947 - 7/20/1949",
 		description: `In December 1946 - at the first post-war Zionist Congress in Basle
 		- David Ben Gurion assumed the defense portfolio, including responsibility for
@@ -529,4 +539,4 @@ const data = [
 	},
 ];
 
-module.exports = data
+module.exports = data;

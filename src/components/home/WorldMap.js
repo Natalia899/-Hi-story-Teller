@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import ReactGlobe from "react-globe";
 import { inject, observer } from "mobx-react";
 
-
-
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import defaultMarkers from "./GlobeData";
@@ -32,7 +30,9 @@ export const MyGlobe = inject("EventsStore")(
 			props.EventsStore.countries = [];
 		};
 		const addCountriesToStore = (marker) => {
+
 			props.EventsStore.addCountriesToStore(marker.country);
+
 		};
 
 		const findCoordinates = () => {
