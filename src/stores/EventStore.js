@@ -51,6 +51,5 @@ export class EventsStore {
                 this.events.push(j)
             }
         }
-        console.log(this.events)
     }
 }

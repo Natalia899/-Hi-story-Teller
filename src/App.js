@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Events from './components/events/Events'
 import Login from './components/authorization/Login'
 import Signup from './components/authorization/SignUp'
+import Event from './components/events/Event';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
       <Route exact path="/addSuggestion" component={AddSuggestion} />
       <Route exact path="/suggestionsList" component={SuggestionsList} />
       <Route exact path="/events" component={Events} />
+      <Route exact path="/event/:id" component={Event} />
     </Router>
   );
 }
