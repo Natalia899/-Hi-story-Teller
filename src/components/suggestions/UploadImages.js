@@ -71,38 +71,12 @@ function UploadImages(props) {
                 <Button style={{ display: 'inline' }} onClick={uploadHandler} variant="contained">Upload</Button>
             </div>
 
-            <div className='uploadImage'>
-                <input accept="image/*" onChange={fileChangedHandler} className={classes.input} id="icon-button-file" type="file" />
-                <label htmlFor="icon-button-file">
-                    <IconButton color="primary" aria-label="upload picture" component="span">
-                        <PhotoCamera />
-                    </IconButton>
-                </label>
-                <TextField style={{ display: 'inline-block' }} name='title' onChange={({ target }) => setImageDescription(target.value)} id="standard-basic" label="Describe the image" />
-                <Button style={{ display: 'inline' }} onClick={uploadHandler} variant="contained">Upload</Button>
-            </div>
-
-            <div className='uploadImage'>
-                <input accept="image/*" onChange={fileChangedHandler} className={classes.input} id="icon-button-file" type="file" />
-                <label htmlFor="icon-button-file">
-                    <IconButton color="primary" aria-label="upload picture" component="span">
-                        <PhotoCamera />
-                    </IconButton>
-                </label>
-                <TextField style={{ display: 'inline-block' }} name='title' onChange={({ target }) => setImageDescription(target.value)} id="standard-basic" label="Describe the image" />
-                <Button style={{ display: 'inline' }} onClick={uploadHandler} variant="contained">Upload</Button>
-            </div>
-
-            <div className='uploadImage'>
-                <input accept="image/*" onChange={fileChangedHandler} className={classes.input} id="icon-button-file" type="file" />
-                <label htmlFor="icon-button-file">
-                    <IconButton color="primary" aria-label="upload picture" component="span">
-                        <PhotoCamera />
-                    </IconButton>
-                </label>
-                <TextField style={{ display: 'inline-block' }} name='title' onChange={({ target }) => setImageDescription(target.value)} id="standard-basic" label="Describe the image" />
-                <Button style={{ display: 'inline' }} onClick={uploadHandler} variant="contained">Upload</Button>
-            </div>
+            { gallery && gallery.map(image => { return (
+                <div>
+                <img width='300px' height='300px' src={image.imageURL} alt='' />
+                <p>{image.imageTitle}</p></div>)
+            }
+                )}
         </div>
     );
 }
