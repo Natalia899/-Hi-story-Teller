@@ -1,19 +1,29 @@
-
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Drawer, CssBaseline, AppBar, Toolbar, List, Divider, IconButton, ListItem, ListItemIcon, ListItemText, } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import HelpIcon from '@material-ui/icons/Help';
-import AddIcon from '@material-ui/icons/Add';
-import { inject, observer } from 'mobx-react'
-import VpnKeyIcon from '@material-ui/icons/VpnKey'
-import InfoIcon from '@material-ui/icons/Info';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import ListIcon from '@material-ui/icons/List';
-
+import React from "react";
+import clsx from "clsx";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import {
+	Drawer,
+	CssBaseline,
+	AppBar,
+	Toolbar,
+	List,
+	Divider,
+	IconButton,
+	ListItem,
+	ListItemIcon,
+	ListItemText,
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import HelpIcon from "@material-ui/icons/Help";
+import AddIcon from "@material-ui/icons/Add";
+import { inject, observer } from "mobx-react";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import InfoIcon from "@material-ui/icons/Info";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ListIcon from "@material-ui/icons/List";
+import "../Styles/Navbar.css";
 
 const drawerWidth = 240;
 
@@ -93,6 +103,9 @@ const NavBar = inject("EventsStore")(
 			<div className={classes.root}>
 				<CssBaseline />
 				<AppBar
+					style={{
+						backgroundColor: "rgb(52, 52, 68)",
+					}}
 					position='fixed'
 					className={clsx(classes.appBar, {
 						[classes.appBarShift]: open,
@@ -129,50 +142,60 @@ const NavBar = inject("EventsStore")(
 						</IconButton>
 					</div>
 					<Divider />
-					<List>
+					<List class='list'>
 						<Link to='/about'>
-							<ListItem button key='About'>
+							<div className="li" >
+							<ListItem  button key='About'>
 								<ListItemIcon>
 									<InfoIcon />
 								</ListItemIcon>
-								<ListItemText primary='About' />
+								<ListItemText class='nav-content'  primary='About' />
 							</ListItem>
+							</div>
 						</Link>
 
 						<Link to='/support'>
-							<ListItem button key='Support'>
+							<div className="li" >
+							<ListItem  button key='Support'>
 								<ListItemIcon>
 									<HelpIcon />
 								</ListItemIcon>
-								<ListItemText primary='Support' />
+								<ListItemText class='nav-content'  primary='Support' />
 							</ListItem>
+							</div>
 						</Link>
 
 						<Link to='/AddSuggestion'>
-							<ListItem button key='AddSuggestion'>
+							<div className="li" >
+							<ListItem  button key='AddSuggestion'>
 								<ListItemIcon>
 									<AddIcon />
 								</ListItemIcon>
-								<ListItemText primary='AddSuggestion' />
+								<ListItemText class='nav-content'  primary='AddSuggestion' />
 							</ListItem>
+							</div>
 						</Link>
 
 						<Link to='/'>
-							<ListItem button key='Logout'>
+							<div className="li" >
+							<ListItem  button key='Logout'>
 								<ListItemIcon>
 									<VpnKeyIcon />
 								</ListItemIcon>
-								<ListItemText primary='Logout' />
+								<ListItemText class='nav-content'  primary='Logout' />
 							</ListItem>
+							</div>
 						</Link>
 						{props.EventsStore.user && props.EventsStore.user.type === "admin" ? (
 							<Link to='/SuggestionsList'>
-								<ListItem button key='SuggestionsList'>
+								<div className="li" >
+								<ListItem  button key='SuggestionsList'>
 									<ListItemIcon>
 										<ListIcon />
 									</ListItemIcon>
-									<ListItemText primary='SuggestionsList' />
+									<ListItemText class='nav-content'  primary='SuggestionsList' />
 								</ListItem>
+								</div>
 							</Link>
 						) : null}
 					</List>
