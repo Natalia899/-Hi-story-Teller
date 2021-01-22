@@ -1,0 +1,22 @@
+.searchTools {
+	display: grid;
+	justify-items: center;
+	margin-bottom: 4em;
+}
+
+.globe-search-bar {
+	font-size: 24px;
+	font-family: "Bodoni Moda", serif;
+	font-weight: lighter;
+	font-style: unset;
+}
+
+.myGlobe {
+	display: grid;
+	justify-content: center;
+	border-radius: 10em;
+}
+
+canvas {
+	border-radius: 2em;
+}

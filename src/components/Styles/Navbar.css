@@ -12,7 +12,7 @@ span {
 	display: grid;
 	align-items: center;
 	border-bottom: solid rgba(2, 2, 2, 0.8);
-	background-color: rgba(133, 122, 165, 0.3);
+	background-color: rgba(200, 200, 200, 0.4);
 	padding: 0.8em;
 }
 
