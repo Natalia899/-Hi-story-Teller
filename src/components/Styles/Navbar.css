@@ -25,3 +25,9 @@ span {
 	padding: 0px;
 	margin-top: 2px;
 }
+
+.logo {
+	display: grid;
+	justify-content: end;
+	align-content: center;
+}

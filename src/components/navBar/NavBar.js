@@ -24,6 +24,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ListIcon from "@material-ui/icons/List";
 import "../Styles/Navbar.css";
+import { Logo } from "../Logo";
 
 const drawerWidth = 240;
 
@@ -102,8 +103,11 @@ const NavBar = inject("EventsStore")(
 		return (
 			<div className={classes.root}>
 				<CssBaseline />
+
 				<AppBar
 					style={{
+						display: "grid",
+						gridTemplateColumns: "repeat(2,1fr)",
 						backgroundColor: "rgb(52, 52, 68)",
 					}}
 					position='fixed'
@@ -122,7 +126,11 @@ const NavBar = inject("EventsStore")(
 							<MenuIcon />
 						</IconButton>
 					</Toolbar>
+					<div className='logo'>
+						<Logo />
+					</div>
 				</AppBar>
+
 				<Drawer
 					className={classes.drawer}
 					variant='persistent'
@@ -142,63 +150,81 @@ const NavBar = inject("EventsStore")(
 						</IconButton>
 					</div>
 					<Divider />
-					<List class='list'>
-						<Link to='/about'>
-							<div className="li" >
-							<ListItem  button key='About'>
-								<ListItemIcon>
-									<InfoIcon />
-								</ListItemIcon>
-								<ListItemText class='nav-content'  primary='About' />
-							</ListItem>
-							</div>
-						</Link>
-
-						<Link to='/support'>
-							<div className="li" >
-							<ListItem  button key='Support'>
-								<ListItemIcon>
-									<HelpIcon />
-								</ListItemIcon>
-								<ListItemText class='nav-content'  primary='Support' />
-							</ListItem>
-							</div>
-						</Link>
-
-						<Link to='/AddSuggestion'>
-							<div className="li" >
-							<ListItem  button key='AddSuggestion'>
-								<ListItemIcon>
-									<AddIcon />
-								</ListItemIcon>
-								<ListItemText class='nav-content'  primary='AddSuggestion' />
-							</ListItem>
-							</div>
-						</Link>
-
-						<Link to='/'>
-							<div className="li" >
-							<ListItem  button key='Logout'>
-								<ListItemIcon>
-									<VpnKeyIcon />
-								</ListItemIcon>
-								<ListItemText class='nav-content'  primary='Logout' />
-							</ListItem>
-							</div>
-						</Link>
-						{props.EventsStore.user && props.EventsStore.user.type === "admin" ? (
-							<Link to='/SuggestionsList'>
-								<div className="li" >
-								<ListItem  button key='SuggestionsList'>
-									<ListItemIcon>
-										<ListIcon />
-									</ListItemIcon>
-									<ListItemText class='nav-content'  primary='SuggestionsList' />
-								</ListItem>
+					<div>
+						<List class='list'>
+							<Link to='/about'>
+								<div className='li'>
+									<ListItem button key='About'>
+										<ListItemIcon>
+											<InfoIcon />
+										</ListItemIcon>
+										<ListItemText
+											class='nav-content'
+											primary='About'
+										/>
+									</ListItem>
 								</div>
 							</Link>
-						) : null}
-					</List>
+
+							<Link to='/support'>
+								<div className='li'>
+									<ListItem button key='Support'>
+										<ListItemIcon>
+											<HelpIcon />
+										</ListItemIcon>
+										<ListItemText
+											class='nav-content'
+											primary='Support'
+										/>
+									</ListItem>
+								</div>
+							</Link>
+
+							<Link to='/AddSuggestion'>
+								<div className='li'>
+									<ListItem button key='AddSuggestion'>
+										<ListItemIcon>
+											<AddIcon />
+										</ListItemIcon>
+										<ListItemText
+											class='nav-content'
+											primary='AddSuggestion'
+										/>
+									</ListItem>
+								</div>
+							</Link>
+
+							<Link to='/'>
+								<div className='li'>
+									<ListItem button key='Logout'>
+										<ListItemIcon>
+											<VpnKeyIcon />
+										</ListItemIcon>
+										<ListItemText
+											class='nav-content'
+											primary='Logout'
+										/>
+									</ListItem>
+								</div>
+							</Link>
+							{props.EventsStore.user &&
+							props.EventsStore.user.type === "admin" ? (
+								<Link to='/SuggestionsList'>
+									<div className='li'>
+										<ListItem button key='SuggestionsList'>
+											<ListItemIcon>
+												<ListIcon />
+											</ListItemIcon>
+											<ListItemText
+												class='nav-content'
+												primary='SuggestionsList'
+											/>
+										</ListItem>
+									</div>
+								</Link>
+							) : null}
+						</List>
+					</div>
 				</Drawer>
 				<main
 					className={clsx(classes.content, {
