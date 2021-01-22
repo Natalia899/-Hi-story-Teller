@@ -1,0 +1,33 @@
+a {
+	text-decoration: none;
+	color: rgb(54, 54, 54);
+}
+
+span {
+	font-family: "Bodoni Moda", serif;
+	font-size: 2em;
+}
+
+.li {
+	display: grid;
+	align-items: center;
+	border-bottom: solid rgba(2, 2, 2, 0.8);
+	background-color: rgba(200, 200, 200, 0.4);
+	padding: 0.8em;
+}
+
+.nav-content {
+	font-family: "Bodoni Moda", serif;
+	font-size: 2em;
+}
+
+.list {
+	padding: 0px;
+	margin-top: 2px;
+}
+
+.logo {
+	display: grid;
+	justify-content: end;
+	align-content: center;
+}

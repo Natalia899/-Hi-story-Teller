@@ -1,46 +1,52 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-import { inject, observer} from 'mobx-react';
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+import { inject, observer } from "mobx-react";
+import "../Styles/TimeLine.css";
 const useStyles = makeStyles({
-  root: {
-    width: 1000,
-  },
+	root: {
+		width: "70vw",
+		fontSize: "12px",
+	},
 });
 
 function TimeLine(props) {
-  const classes = useStyles();
+	const classes = useStyles();
 
-  function valuetext(value) {
-    return `${value}`;
-  }
+	function valuetext(value) {
+		return `${value}`;
+	}
 
-  const handleChange = (event, newValue) => {
-    props.EventsStore.setDateRange(newValue)
-  };
+	const handleChange = (event, newValue) => {
+		props.EventsStore.setDateRange(newValue);
+	};
 
-  return (
-    <div className={classes.root}>
+	return (
+		<div className={classes.root}>
+			<div className='timeline-container'>
+				<div>
+					<Typography id='range-slider' gutterBottom>
+						<h3>Timeline</h3>
+					</Typography>
 
-      <Typography id="range-slider" gutterBottom>
-        Years Range
-      </Typography>
-
-      <Slider
-        value={props.EventsStore.dateRange}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
-        getAriaValueText={valuetext}
-        min={1600}
-        max={2000}
-      />
-      
-    </div>
-  );
+					<Slider
+						style={{
+              color: "rgb(4,4,25)",
+              width: "70vw",
+						}}
+						value={props.EventsStore.dateRange}
+						onChange={handleChange}
+						valueLabelDisplay='auto'
+						aria-labelledby='range-slider'
+						getAriaValueText={valuetext}
+						min={1600}
+						max={2000}
+					/>
+				</div>
+			</div>
+		</div>
+	);
 }
 
-export default inject("EventsStore")(observer(TimeLine))
-
+export default inject("EventsStore")(observer(TimeLine));
