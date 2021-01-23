@@ -10,7 +10,8 @@ const eventSchema = new Schema({
     gallery: [],
     description: String,
     approved: Boolean,
-    discussion: []
+    discussion: [], 
+    quiz: []
 })
 
 const Event = mongoose.model('event', eventSchema)

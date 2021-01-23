@@ -15,7 +15,8 @@ const cors = require('cors');
 // 		countries: event.countries,
 // 		gallery: event.gallery,
 // 		description: event.description,
-// 		approved: false,
+// 		approved: true,
+//          quiz: event.quiz
 // 	});
 // 	newEvent.save();
 // });
@@ -50,6 +51,12 @@ router.post('/events', async (req, res) => {
     }
     
     res.send(events)
+})
+
+router.get('/quiz', async (req, res)=> {
+    const allEvents = await Event.find({})
+    let result = allEvents.map(event => { return {id: event._id, title: event.title, quiz: event.quiz}})
+    res.send(result)
 })
 
 router.post('/event', async (req, res) => {
