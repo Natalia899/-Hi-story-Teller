@@ -8,7 +8,6 @@ import TextField from "@material-ui/core/TextField";
 import "date-fns";
 
 import Button from "@material-ui/core/Button";
-import { set } from "mobx";
 
 const VerifySuggest = inject("EventsStore")(
 	observer((props) => {
