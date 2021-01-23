@@ -16,6 +16,7 @@ import Event from './components/events/Event';
 import QuizStart from './components/quiz/QuizStart';
 import QuizQuestion from './components/quiz/QuizQuestion';
 
+
 export default function App() {
   return (
     <Router>

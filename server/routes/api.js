@@ -49,7 +49,6 @@ router.post('/events', async (req, res) => {
                 events.push(response)
             })
     }
-    
     res.send(events)
 })
 
@@ -95,18 +94,11 @@ router.put('/event/:id', async (req, res) => {
 router.put('/comment/:id', async (req, res) => {
     const { id } = req.params
     let newComment = req.body
-    console.log(req.body);
     Event.find({ _id: id }, (err, event) => {
-        console.log(event);
         event[0].discussion.push(newComment)
-        console.log(event);
         event[0].save()
         res.send(event)
     })
-    // let relEvent = await Event.find({_id: id})
-    // relEvent[0].discussion.push(...req.body)
-    // await relEvent[0].save()
-    // res.send(relEvent[0].discussion)
 })
 
 router.get('/suggestions', async (req, res) => {

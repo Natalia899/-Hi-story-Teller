@@ -20,9 +20,11 @@ export class EventsStore {
 			addCountriesToStore: action,
 			currentSuggestionFunction: action,
 			approveSuggestion: action,
+
 			deleteSuggestion: action,
 			quiz:observable,
 			getQuiz: action
+
 		});
 	}
 
@@ -61,6 +63,11 @@ export class EventsStore {
 			}
 		}
 		console.log(this.events);
+
+    addingComment = async (newComment, id) => {
+        await axios.put(`http://localhost:4200/comment/${id}`, newComment)
+    }
+
 	};
 	approveSuggestion = async (id) => {
 		await axios.put(`http://localhost:4200/event/${id}`);
@@ -74,4 +81,5 @@ export class EventsStore {
 	this.quiz = result.data
 
 	}
+
 }
