@@ -8,54 +8,68 @@ export class EventsStore {
 		this.countries = [];
 		this.currentSuggestion = {};
 
-        makeObservable(this, {
-            events: observable,
-            eventsRender: action,
-            user: observable,
-            dateRange: observable,
-            setDateRange: action,
-            countries: observable,
-            addCountriesToStore: action,
-          currentSuggestion: observable,
-            currentSuggestionFunction:action
-        })
-    }
+		makeObservable(this, {
+			events: observable,
+			user: observable,
+			dateRange: observable,
+			countries: observable,
+			currentSuggestion: observable,
+			eventsRender: action,
+			setDateRange: action,
+			addCountriesToStore: action,
+			currentSuggestionFunction: action,
+			approveSuggestion: action,
+            deleteSuggestion: action,
+            addingComment: action,
+		});
+	}
 
-    setDateRange = (val) => {
-        this.dateRange = val
-    }
+	setDateRange = (val) => {
+		this.dateRange = val;
+	};
 
-    userLogin = async (user) => {
-        const data = await axios.post("http://localhost:4200/login", user)
-        if(data.data){
-            this.user = data.data
-        }else{
-           alert('username or password is not correct') 
-        }
-        
-    }
+	userLogin = async (user) => {
+		const data = await axios.post("http://localhost:4200/login", user);
+		if (data.data) {
+			this.user = data.data;
+		} else {
+			alert("username or password is not correct");
+		}
+	};
 
-    currentSuggestionFunction = (suggestion) => {
-        console.log(suggestion)
-        this.currentSuggestion = suggestion
-    }
-    addCountriesToStore = (country) => {
-        this.countries.push(country);
-        console.log(this.countries)
+	currentSuggestionFunction = (suggestion) => {
+		console.log(suggestion);
+		this.currentSuggestion = suggestion;
+	};
+	addCountriesToStore = (country) => {
+		this.countries.push(country);
+		console.log(this.countries);
+	};
+
+	eventsRender = async () => {
+		const countries = this.countries;
+		const startDate = this.dateRange[0];
+		const endDate = this.dateRange[1];
+		const eventsData = { startDate, endDate, countries };
+		let data = await axios.post("http://localhost:4200/events", eventsData);
+		data = data.data;
+		for (let i of data) {
+			for (let j of i) {
+				this.events.push(j);
+			}
+		}
+		console.log(this.events);
     };
-
-    eventsRender = async () => {
-        const countries = this.countries
-        const startDate = this.dateRange[0]
-        const endDate = this.dateRange[1]
-        const eventsData = {startDate, endDate, countries}
-        let data = await axios.post("http://localhost:4200/events", eventsData)
-        data = data.data
-        for(let i of data){
-            for(let j of i){
-                this.events.push(j)
-            }
-        }
-        console.log(this.events)
+    
+	approveSuggestion = async (id) => {
+		await axios.put(`http://localhost:4200/event/${id}`);
+    };
+    
+	deleteSuggestion = async (id) => {
+		await axios.delete(`http://localhost:4200/event/${id}`);
+    };
+    
+    addingComment = async (newComment, id) => {
+        await axios.put(`http://localhost:4200/comment/${id}`, newComment)
     }
 }

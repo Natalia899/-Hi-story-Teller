@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const api = require('./server/routes/api')
 const mongoose = require('mongoose')
+const cors = require('cors');
 
 mongoose.connect('mongodb://localhost/historyEventsDB', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -16,7 +17,7 @@ app.use(function (req, res, next) {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-
+app.use(cors());
 app.use('/', api)
 
 const port = 4200
