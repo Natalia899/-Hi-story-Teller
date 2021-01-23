@@ -38,7 +38,13 @@ const VerifySuggest = inject("EventsStore")(
 					<Container maxWidth='sm'>
 						<h2>Administrator Editor</h2>
 						<hr />
-						<div>
+						<div
+							style={{
+								display: "grid",
+								justifyItems: "start",
+								width: "100vw",
+							}}
+						>
 							<div className='inputs-field-container'>
 								<TextField
 									className='input-field'
@@ -104,7 +110,7 @@ const VerifySuggest = inject("EventsStore")(
 										type='file'
 									/>
 									<TextField
-									className="imageDescripation-input"
+										className='imageDescripation-input'
 										onChange={({ target }) =>
 											setDescriptionImage(target.value)
 										}
@@ -113,7 +119,7 @@ const VerifySuggest = inject("EventsStore")(
 										placeholder='Description'
 									/>
 									<Button
-										id="upload-button"
+										id='upload-button'
 										onClick={async () => {
 											const formData = new FormData();
 											formData.append("file", URLImage); // file equls to type
@@ -139,7 +145,13 @@ const VerifySuggest = inject("EventsStore")(
 									>
 										Upload
 									</Button>
-									<div>
+									<div
+										style={{
+											display: "grid",
+											gridTemplateColumns: "repeat(2,1fr)",
+											gap: "1em",
+										}}
+									>
 										{suggestion.gallery &&
 											suggestion.gallery.map((m, index) => (
 												<div>
@@ -159,12 +171,18 @@ const VerifySuggest = inject("EventsStore")(
 														}}
 														value={m.imageTitle}
 														type='text'
+														style={{
+															width: "150px",
+														}}
 													/>
 													<br />
 
 													<img
-														width='300px'
-														height='300px'
+														style={{
+															marginRight: "1.2em",
+														}}
+														width='150px'
+														height='150px'
 														src={m.imageURL}
 														alt=''
 													/>
@@ -172,6 +190,10 @@ const VerifySuggest = inject("EventsStore")(
 													<br />
 
 													<Button
+														style={{
+															backgroundColor:
+																"rgba(200,200,200,0.8)",
+														}}
 														onClick={() => {
 															let obj = {
 																...suggestion,
@@ -190,27 +212,43 @@ const VerifySuggest = inject("EventsStore")(
 									</div>
 								</div>
 							</div>
-
-							<Link to='/suggestionsList'>
-								<Button
-									onClick={() =>
-										props.EventsStore.approveSuggestion(
-											suggestion._id
-										)
-									}
-								>
-									APPROVE
-								</Button>
-							</Link>
-							<Link to='/suggestionsList'>
-								<Button
-									onClick={() =>
-										props.EventsStore.deleteSuggestion(suggestion._id)
-									}
-								>
-									Reject
-								</Button>
-							</Link>
+							<div
+								sytle={{
+									display: "grid",
+									gridTemplateColumns: "repeat(2,1fr)",
+								}}
+							>
+								<Link to='/suggestionsList'>
+									<Button
+										style={{
+											backgroundColor: "rgba(200,200,200,0.8)",
+											marginRight: "1em",
+										}}
+										onClick={() =>
+											props.EventsStore.approveSuggestion(
+												suggestion._id
+											)
+										}
+									>
+										APPROVE
+									</Button>
+								</Link>
+								<Link to='/suggestionsList'>
+									<Button
+										style={{
+											backgroundColor: "rgba(200,200,200,0.8)",
+											marginRight: "1em",
+										}}
+										onClick={() =>
+											props.EventsStore.deleteSuggestion(
+												suggestion._id
+											)
+										}
+									>
+										Reject
+									</Button>
+								</Link>
+							</div>
 						</div>
 					</Container>
 				</React.Fragment>
