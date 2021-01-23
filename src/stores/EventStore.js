@@ -7,6 +7,7 @@ export class EventsStore {
 		this.dateRange = [1600, 2000];
 		this.countries = [];
 		this.currentSuggestion = {};
+		this.quiz = [];
 
 		makeObservable(this, {
 			events: observable,
@@ -20,6 +21,8 @@ export class EventsStore {
 			currentSuggestionFunction: action,
 			approveSuggestion: action,
 			deleteSuggestion: action,
+			quiz:observable,
+			getQuiz: action
 		});
 	}
 
@@ -65,4 +68,10 @@ export class EventsStore {
 	deleteSuggestion = async (id) => {
 		await axios.delete(`http://localhost:4200/event/${id}`);
 	};
+
+	getQuiz = async () => {
+	let result = await axios.get('http://localhost:4200/quiz')
+	this.quiz = result.data
+
+	}
 }

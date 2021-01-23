@@ -1,0 +1,18 @@
+.cricle-shape {
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	background-color: white;
+	border-radius: 50%;
+	width: 4em;
+	height: 3.1em;
+	margin-right: 1.2em;
+}
+
+.H {
+	color: rgb(255, 196, 0);
+	font-size: 2em;
+	font-family: "Abril Fatface", cursive;
+}
+
+
