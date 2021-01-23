@@ -4,15 +4,19 @@ import Event from './Event'
 import { useEffect, useState } from 'react';
 
 
+
 function Events(props){
     let {events} = props.EventsStore
 
     console.log(events)
+
     
     return(
         <div>
          { events.map(event => {return(
+
             <div> 
+
                 <h1>
                     {event.title}
                 </h1>
@@ -23,6 +27,7 @@ function Events(props){
                 </Link>
             </div>
             )})}
+
         </div>
     )
 }
