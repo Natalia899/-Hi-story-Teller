@@ -4,10 +4,11 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import { inject, observer } from "mobx-react";
 import "../Styles/TimeLine.css";
+
 const useStyles = makeStyles({
 	root: {
 		width: "70vw",
-		fontSize: "12px",
+		
 	},
 });
 
@@ -27,13 +28,13 @@ function TimeLine(props) {
 			<div className='timeline-container'>
 				<div>
 					<Typography id='range-slider' gutterBottom>
-						<h3>Timeline</h3>
+						<h3 className='timeline-header' >Timeline</h3>
 					</Typography>
 
 					<Slider
 						style={{
-              color: "rgb(4,4,25)",
-              width: "70vw",
+							color: "rgb(4,4,25)",
+							width: "70vw",
 						}}
 						value={props.EventsStore.dateRange}
 						onChange={handleChange}

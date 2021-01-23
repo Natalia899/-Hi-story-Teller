@@ -9,11 +9,15 @@
 	justify-items: center;
 }
 
-h3 {
+.timeline-header {
 	margin: 0px;
 	padding: 4px;
 	letter-spacing: 2px;
 	font-family: "Bodoni Moda", serif;
 	font-family: "Hachi Maru Pop", cursive;
 	font-weight: lighter;
+}
+
+span{
+	font-size: 12px !important;
 }
