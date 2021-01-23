@@ -536,6 +536,87 @@ const data = [
 					"https://www.maariv.co.il/HttpHandlers/ShowImage.ashx?id=315572&w=500&h=380",
 			},
 		],
+		quiz: [
+			   {question: 'On November 29th, 1947, the UN approved a plan to create two states: one Arab, one Jewish. What happened the next day?',
+			   answerOptions: [
+					 {answer: 'The Arab High Council announced a general workers strike, which lasted three days', isCorrect: false },
+					 {answer: 'Three Jewish buses were attacked and the Arab prisoners in the British prison in Acre rioted', isCorrect: true },
+					 {answer: 'The Egyptian army invaded.', isCorrect: false },
+					 {answer: ' The Arab League met in Cairo to approve the formation of an army of volunteers to fight the Jews', isCorrect: false },
+			   ]},
+
+			   {question: 'How many cannons did the Jewish forces have when the fighting began?',
+			   answerOptions: [
+					 {answer: 'Three', isCorrect: false },
+					 {answer: 'One', isCorrect: true },
+					 {answer: 'Five', isCorrect: false },
+					 {answer: 'Six', isCorrect: false },
+			   ]},
+
+			   {question: ' In what month did the Jewish leadership decide on a change of tactics, from passive defence to pre-emptive offence?',
+			   answerOptions: [
+					 {answer: 'February 1948', isCorrect: false },
+					 {answer: 'December 1947', isCorrect: false },
+					 {answer: 'April 1948', isCorrect: true },
+					 {answer: 'January 1948', isCorrect: false },
+			   ]},
+
+			   {question: ' The creation of the State of Israel was announced on May 14 1948. The next day the armies of the Arab nations began their invasion. What countries did these armies come from?',
+			   answerOptions: [
+					 {answer: 'Egypt, Jordan and Syria.', isCorrect: false },
+					 {answer: 'Egypt, Lebanon, Jordan and Syria.', isCorrect: false },
+					 {answer: 'Egypt, Iraq, Lebanon, Jordan and Syria.', isCorrect: true },
+					 {answer: 'Egypt, Lebanon and Jordan', isCorrect: false },
+			   ]},
+
+			   {question: ' What was the name of the operation in which children were evacuated from small towns in an area where there was heavy fighting?',
+			   answerOptions: [
+					 {answer: 'Kilshon', isCorrect: false },
+					 {answer: 'Yeled', isCorrect: false },
+					 {answer: 'Heram', isCorrect: false },
+					 {answer: 'Tinok', isCorrect: true },
+			   ]},
+
+			   {question: ' The official order creating the Israeli army, the IDF (Israeli Defense Force), was published on May 28 1948. Many people agree that the most significant section of the order is section four. What does it state?',
+			   answerOptions: [
+					 {answer: 'The IDF will be comprised of Ground Forces, an Air Force, and a navy.', isCorrect: false },
+					 {answer: 'Every person serving in the IDF must swear allegiance to the State of Israel and to its government.', isCorrect: false },
+					 {answer: 'In times of National Emergency there will be mandatory conscription.', isCorrect: false },
+					 {answer: 'There will be no armed militia in Israel, and the IDF will be the only armed force.', isCorrect: true },
+			   ]},
+
+			   {question: ' What was the name of the road to Jerusalem that was built by the Israeli forces during the war?',
+			   answerOptions: [
+					 {answer: 'Burma', isCorrect: true },
+					 {answer: 'Jebusite', isCorrect: false },
+					 {answer: ' Yoram', isCorrect: false },
+					 {answer: 'Ben-Nun', isCorrect: false },
+			   ]},
+
+			   {question: 'The first Israeli fighter planes arrived from Czechoslovakia after the war had already started, and were assembled in a hurry. What was their first mission?',
+			   answerOptions: [
+					 {answer: ' An attack on Egyptian forces near Asdod.', isCorrect: true },
+					 {answer: 'An attack on Lebanese forces that were attempting to reach Tiberius.', isCorrect: false },
+					 {answer: 'An attack on Syrian forces near the Syrian border', isCorrect: false },
+					 {answer: 'An attack on the Egyptian airfields in the Negev desert', isCorrect: false },
+			   ]},
+
+			   {question: ' One of the Arab leaders tried to make a deal with Israel during the war.',
+			   answerOptions: [
+					 {answer: 'True', isCorrect: true },
+					 {answer: 'False', isCorrect: false },
+
+			   ]},
+
+			   {question: 'The last Israeli operation in the war was operation "Uvdah" (meaning "fact"), the objective of which was to conquer the town of Eilat (called Oom-Rash-Rash by the Egyptians) and establish as a fact that Israel was in control of the Negev desert and all territories north of Eilat (except for the Gaza strip, which was under Egyptian control). Two brigades were sent to capture the town, each by a different route. Which brigade captured the town on March 9 1949?',
+			   answerOptions: [
+					 {answer: 'Golani', isCorrect: false },
+					 {answer: 'Giv`ati', isCorrect: false },
+					 {answer: 'Alecsandroni', isCorrect: false },
+					 {answer: 'Negev', isCorrect: true },
+			   ]},
+
+		],
 	},
 ];
 

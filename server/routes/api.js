@@ -4,6 +4,7 @@ const router = express.Router();
 const Event = require("../models/event");
 const User = require("../models/user");
 const data = require("./data");
+const cors = require('cors');
 
 // data.forEach((event) => {
 // 	let newEvent = new Event({
@@ -14,7 +15,8 @@ const data = require("./data");
 // 		countries: event.countries,
 // 		gallery: event.gallery,
 // 		description: event.description,
-// 		approved: false,
+// 		approved: true,
+//          quiz: event.quiz
 // 	});
 // 	newEvent.save();
 // });
@@ -39,6 +41,7 @@ router.post('/events', async (req, res) => {
     const events = []
     for(let country of countries){
         await Event.find({ 
+            approved: true,
             countries: { $in: [`${country}`] },
             startDate: { $gte: `${startDate}` },
             endDate: { $lte: `${endDate}` } })
@@ -48,6 +51,12 @@ router.post('/events', async (req, res) => {
     }
     
     res.send(events)
+})
+
+router.get('/quiz', async (req, res)=> {
+    const allEvents = await Event.find({})
+    let result = allEvents.map(event => { return {id: event._id, title: event.title, quiz: event.quiz}})
+    res.send(result)
 })
 
 router.post('/event', async (req, res) => {
