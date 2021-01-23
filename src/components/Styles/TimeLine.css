@@ -1,0 +1,23 @@
+.timeline-container {
+	display: grid;
+	justify-content: center;
+	width: 100vw;
+}
+
+.timeline-container div {
+	display: grid;
+	justify-items: center;
+}
+
+.timeline-header {
+	margin: 0px;
+	padding: 4px;
+	letter-spacing: 2px;
+	font-family: "Bodoni Moda", serif;
+	font-family: "Hachi Maru Pop", cursive;
+	font-weight: lighter;
+}
+
+span{
+	font-size: 12px !important;
+}

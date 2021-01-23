@@ -1,0 +1,65 @@
+.inputs-field-container {
+	display: inline-block;
+	background-color: white;
+	padding: 3em;
+}
+
+.input-field {
+	width: 38em;
+}
+
+hr {
+	width: 44em;
+}
+
+.text-area {
+	font-size: 18px;
+	background-color: rgba(255, 245, 232, 0.4);
+	font-family: "Philosopher", sans-serif;
+	color: rgba(53, 53, 53, 0.8);
+	font-weight: lighter;
+}
+
+.layout-verify-page {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.sapce-and-gap {
+	width: 260px;
+	margin-left: 2em;
+}
+
+#title {
+	font-family: "Neuton", serif;
+	font-size: 26px;
+	font-weight: 700;
+}
+
+#countries-input {
+	font-family: "Neuton", serif;
+	font-weight: 400;
+	font-size: 20px;
+}
+
+#startDate {
+	font-family: "Philosopher", sans-serif;
+	font-size: 28px;
+}
+
+#endDate {
+	font-family: "Philosopher", sans-serif;
+	font-size: 28px;
+}
+
+.imageDescripation-input {
+	font-family: "Neuton", serif;
+	font-weight: lighter;
+	font-size: 20px;
+}
+
+#upload-button {
+	background-color: rgba(200, 200, 200, 0.4);
+	font-weight: bold;
+	font-size: 5em;
+}

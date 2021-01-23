@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import React, { useEffect, useState } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Accordion from '@material-ui/core/Accordion';
@@ -9,9 +10,11 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import "./Event.css"
+
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { TextField } from '@material-ui/core';
 import axios from 'axios';
+
 
 
 function Event(props) {
@@ -24,17 +27,17 @@ function Event(props) {
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
+
                 margin: theme.spacing(1)
             },
             width: '100%',
             heading: {
-                display:"grid !important",
                 fontSize: theme.typography.pxToRem(15),
                 fontWeight: theme.typography.fontWeightRegular,
-                justifySelf: 'center',
             }
         }
     }));
+
 
     const [input, setInput] = useState("")
     const [comments, setComments] = useState([])
@@ -95,16 +98,19 @@ function Event(props) {
                         display:"grid",
                         justifyContent:"center",
                     }} >
+
                     <div>
                         <Typography className= {classes.heading}>
                             Share your thoughts!
                         </Typography>
                     </div>
+
                     </div>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
                             <label>user name: {user}</label>
+
                             <TextField
                             id="outlined-full-width"
                             label="type"
@@ -137,6 +143,7 @@ function Event(props) {
                             </div><br></br>
                         </div>
                     )}): null}
+
                 </Accordion>
             </div>
         </div>

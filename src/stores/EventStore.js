@@ -7,6 +7,7 @@ export class EventsStore {
 		this.dateRange = [1600, 2000];
 		this.countries = [];
 		this.currentSuggestion = {};
+		this.quiz = [];
 
 		makeObservable(this, {
 			events: observable,
@@ -19,8 +20,11 @@ export class EventsStore {
 			addCountriesToStore: action,
 			currentSuggestionFunction: action,
 			approveSuggestion: action,
-            deleteSuggestion: action,
-            addingComment: action,
+
+			deleteSuggestion: action,
+			quiz:observable,
+			getQuiz: action
+
 		});
 	}
 
@@ -59,17 +63,23 @@ export class EventsStore {
 			}
 		}
 		console.log(this.events);
-    };
-    
-	approveSuggestion = async (id) => {
-		await axios.put(`http://localhost:4200/event/${id}`);
-    };
-    
-	deleteSuggestion = async (id) => {
-		await axios.delete(`http://localhost:4200/event/${id}`);
-    };
-    
+
     addingComment = async (newComment, id) => {
         await axios.put(`http://localhost:4200/comment/${id}`, newComment)
     }
+
+	};
+	approveSuggestion = async (id) => {
+		await axios.put(`http://localhost:4200/event/${id}`);
+	};
+	deleteSuggestion = async (id) => {
+		await axios.delete(`http://localhost:4200/event/${id}`);
+	};
+
+	getQuiz = async () => {
+	let result = await axios.get('http://localhost:4200/quiz')
+	this.quiz = result.data
+
+	}
+
 }
