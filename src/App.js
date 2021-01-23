@@ -13,6 +13,8 @@ import Events from './components/events/Events'
 import Login from './components/authorization/Login'
 import Signup from './components/authorization/SignUp'
 import Event from './components/events/Event';
+import QuizStart from './components/quiz/QuizStart';
+import QuizQuestion from './components/quiz/QuizQuestion';
 
 export default function App() {
   return (
@@ -27,6 +29,8 @@ export default function App() {
       <Route exact path="/events" component={Events} />
       <Route exact path="/event/:id" component={Event} />
     	<Route exact path='/verifySuggestion' component={VerifySuggest} />
+      <Route exact path="/quiz" component={QuizStart} />
+      <Route exact path="/quiz/:eventId" component={QuizQuestion} />
     </Router>
   );
 

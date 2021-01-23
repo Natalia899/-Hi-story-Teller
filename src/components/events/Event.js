@@ -26,6 +26,7 @@ function Event(props) {
                 margin: theme.spacing(1),
             },
             width: '100%',
+            alignContent: 'center',
             heading: {
                 display:"grid !important",
                 fontSize: theme.typography.pxToRem(15),
