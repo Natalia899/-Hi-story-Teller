@@ -79,7 +79,7 @@ export const MyGlobe = inject("EventsStore")(
 				</div>
 				<div className='myGlobe'>
 					<ReactGlobe
-						width='auto'
+						width='40vw'
 						height='50vh'
 						markers={defaultMarkers}
 						animations={animations}
