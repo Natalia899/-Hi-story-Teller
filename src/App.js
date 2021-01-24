@@ -4,7 +4,7 @@ import AddSuggestion from './components/suggestions/AddSuggestion'
 import SuggestionsList from './components/suggestions/SuggestionsList'
 import About from './components/navBar/About'
 import Support from './components/navBar/Support'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import VerifySuggest from "./components/suggestions/VerifySuggest";
 import Events from './components/events/Events'
 import Login from './components/authorization/Login'

@@ -8,7 +8,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker }
 import { inject, observer } from 'mobx-react'
 import axios from "axios";
 import { Link } from 'react-router-dom'
-import UploadImages from './UploadImages'
+import UploadImages from './AddSuggestionComponents/UploadImages'
 
 function AddSuggestion(props) {
   const [selectedStartDate, setStartSelectedDate] = useState(new Date());
