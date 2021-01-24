@@ -6,7 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import "date-fns";
-
+import "../Styles/VerifySuggestions.css";
 import Button from "@material-ui/core/Button";
 import { set } from "mobx";
 
@@ -37,128 +37,162 @@ const VerifySuggest = inject("EventsStore")(
 				<React.Fragment>
 					<CssBaseline />
 					<Container maxWidth='sm'>
-						<h4>Send us your (hi)story</h4>
+						<h2>Administrator Editor</h2>
+						<hr />
 						<div>
-							<TextField
-								name='title'
-								id='standard-basic'
-								label='Title'
-								value={suggestion.title}
-								onChange={handleInputChange}
-							/>
-							<br />
-							<TextField
-								name='countries'
-								id='standard-basic'
-								label='Country'
-								value={suggestion.countries}
-								onChange={handleInputChange}
-							/>
-							<br />
-							<TextField
-								name='startDate'
-								type='nubmer'
-								id='standard-basic'
-								label='StartDate'
-								value={suggestion.startDate}
-								onChange={handleInputChange}
-							/>
-							<br />
-							<TextField
-								name='endDate'
-								type='nubmer'
-								id='standard-basic'
-								label='EndDate'
-								value={suggestion.endDate}
-								onChange={handleInputChange}
-							/>
-							<div for='w3review'>Description</div>
-							<textarea
-								name='description'
-								id='w3review'
-								rows='15'
-								cols='80'
-								value={suggestion.description}
-								onChange={handleInputChange}
-							/>
-							<div>
-								{suggestion.gallery &&
-									suggestion.gallery.map((m, index) => (
-										<div>
-											<input
-												onChange={({ target }) => {
-													let obj = { ...suggestion };
-													obj.gallery[index].imageTitle =
-														target.value;
-													obj.gallery[index].imageURL =
-														m.imageURL;
-													setSuggestion(obj);
-												}}
-												value={m.imageTitle}
-												type='text'
-											/>
-											<br />
 
-											<img
-												width='300px'
-												height='300px'
-												src={m.imageURL}
-												alt=''
-											/>
-
-											<br />
-
-											<Button
-												onClick={() => {
-													let obj = { ...suggestion };
-													obj.gallery.splice(index, 1);
-													setSuggestion(obj);
-												}}
-											>
-												DELETE
-											</Button>
-										</div>
-									))}
+							<div className='inputs-field-container'>
+								<TextField
+									className='input-field'
+									name='title'
+									id='title'
+									label='Title'
+									value={suggestion.title}
+									onChange={handleInputChange}
+								/>
+								<br />
+								<TextField
+									className='input-field'
+									name='countries'
+									id='countries-input'
+									label='Country'
+									value={suggestion.countries}
+									onChange={handleInputChange}
+								/>
+								<br />
+								<TextField
+									className='input-field'
+									name='startDate'
+									type='nubmer'
+									id='startDate'
+									label='StartDate'
+									value={suggestion.startDate}
+									onChange={handleInputChange}
+								/>
+								<br />
+								<TextField
+									className='input-field'
+									name='endDate'
+									type='nubmer'
+									id='endDate'
+									label='EndDate'
+									value={suggestion.endDate}
+									onChange={handleInputChange}
+								/>
 							</div>
-							<div>
-								<input
-									onChange={({ target }) => {
-										setURLImage(target.files[0]);
-									}}
-									type='file'
-								/>
-								<input
-									onChange={({ target }) =>
-										setDescriptionImage(target.value)
-									}
-									value={descriptionImage}
-									type='text'
-									placeholder='Description'
-								/>
-								<Button
-									onClick={async () => {
-										const formData = new FormData();
-										formData.append("file", URLImage); // file equls to type
-										formData.append("upload_preset", preset);
-
-										try {
-											const res = await axios.post(url, formData);
-											const imageUrl = res.data.secure_url;
-											let obj = { ...suggestion };
-											obj.gallery.push({
-												id: res.data.public_id,
-												imageTitle: descriptionImage,
-												imageURL: imageUrl,
-											});
-											setSuggestion(obj);
-										} catch (err) {
-											console.log(err);
+							<div for='w3review'>
+								<h3>Description</h3>
+							</div>
+							<div className='layout-verify-page'>
+								<div>
+									<textarea
+										name='description'
+										className='text-area'
+										rows='15'
+										cols='60'
+										style={{
+											lineHeight: "2em",
+										}}
+										onChange={handleInputChange}
+										value={suggestion.description}
+									></textarea>
+								</div>
+								<div className='sapce-and-gap'>
+									<TextField
+										className='input-file'
+										onChange={({ target }) => {
+											setURLImage(target.files[0]);
+										}}
+										type='file'
+									/>
+									<TextField
+									className="imageDescripation-input"
+										onChange={({ target }) =>
+											setDescriptionImage(target.value)
 										}
-									}}
-								>
-									Upload
-								</Button>
+										value={descriptionImage}
+										type='text'
+										placeholder='Description'
+									/>
+									<Button
+										id="upload-button"
+										onClick={async () => {
+											const formData = new FormData();
+											formData.append("file", URLImage); // file equls to type
+											formData.append("upload_preset", preset);
+
+											try {
+												const res = await axios.post(
+													url,
+													formData
+												);
+												const imageUrl = res.data.secure_url;
+												let obj = { ...suggestion };
+												obj.gallery.push({
+													id: res.data.public_id,
+													imageTitle: descriptionImage,
+													imageURL: imageUrl,
+												});
+												setSuggestion(obj);
+											} catch (err) {
+												console.log(err);
+											}
+										}}
+									>
+										Upload
+									</Button>
+									<div>
+										{suggestion.gallery &&
+											suggestion.gallery.map((m, index) => (
+												<div>
+													<input
+														onChange={({ target }) => {
+															let obj = {
+																...suggestion,
+															};
+															obj.gallery[
+																index
+															].imageTitle =
+																target.value;
+															obj.gallery[
+																index
+															].imageURL = m.imageURL;
+															setSuggestion(obj);
+														}}
+														value={m.imageTitle}
+														type='text'
+													/>
+													<br />
+
+													<img
+														width='300px'
+														height='300px'
+														src={m.imageURL}
+														alt=''
+													/>
+
+													<br />
+
+													<Button
+														onClick={() => {
+															let obj = {
+																...suggestion,
+															};
+															obj.gallery.splice(
+																index,
+																1
+															);
+															setSuggestion(obj);
+														}}
+													>
+														DELETE
+													</Button>
+												</div>
+											))}
+									</div>
+								</div>
 							</div>
+
 							<Link to='/suggestionsList'>
 								<Button
 									onClick={() =>

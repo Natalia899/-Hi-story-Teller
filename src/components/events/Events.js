@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { inject, observer} from 'mobx-react';
-import React from 'react'
+import Event from './Event'
+import { useEffect, useState } from 'react';
+
+
 
 function Events(props){
     let {events} = props.EventsStore
@@ -10,7 +13,9 @@ function Events(props){
     return(
         <div>
          { events.map(event => {return(
-            <div>
+
+            <div> 
+
                 <h1>
                     {event.title}
                 </h1>
@@ -20,7 +25,8 @@ function Events(props){
                     <img src={event.gallery[0].imageURL} alt='' />
                 </Link>
             </div>
-            )})}  
+            )})}
+
         </div>
     )
 }

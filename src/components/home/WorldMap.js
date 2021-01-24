@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ReactGlobe from "react-globe";
 import { inject, observer } from "mobx-react";
+import "../Styles/MyGlobe.css";
 
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import defaultMarkers from "./GlobeData";
+import { Button } from "@material-ui/core";
 
 export const MyGlobe = inject("EventsStore")(
 	observer((props) => {
@@ -30,9 +32,7 @@ export const MyGlobe = inject("EventsStore")(
 			props.EventsStore.countries = [];
 		};
 		const addCountriesToStore = (marker) => {
-
 			props.EventsStore.addCountriesToStore(marker.country);
-
 		};
 
 		const findCoordinates = () => {
@@ -46,12 +46,40 @@ export const MyGlobe = inject("EventsStore")(
 		};
 		return (
 			<div>
-				<input type='text' onChange={({ target }) => setCountry(target.value)} />
-				<button onClick={findCoordinates}>Filter</button>
-				<button onClick={clearCountriesFromStore}>Clear</button>
-				<div className='myGlob'>
+				<div className='searchTools'>
+					<input
+						className='globe-search-bar'
+						type='text'
+						onChange={({ target }) => setCountry(target.value)}
+					/>
+					<div>
+						<Button
+							style={{
+								backgroundColor: "rgba(200, 200, 200, 0.4)",
+								fontSize: "9px",
+								margin: "1em",
+							}}
+							className='Fliter'
+							onClick={findCoordinates}
+						>
+							Filter
+						</Button>
+						<Button
+							style={{
+								backgroundColor: "rgba(200, 200, 200, 0.4)",
+								fontSize: "9px",
+								margin: "1em",
+							}}
+							className='Reset'
+							onClick={clearCountriesFromStore}
+						>
+							Reset
+						</Button>
+					</div>
+				</div>
+				<div className='myGlobe'>
 					<ReactGlobe
-						width='50vw'
+						width='40vw'
 						height='50vh'
 						markers={defaultMarkers}
 						animations={animations}
