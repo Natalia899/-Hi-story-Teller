@@ -181,8 +181,8 @@ function AddSuggestion(props) {
 							<textarea
 								style={{
 									fontWeight: "lighter",
-                  fontFamily: `"Neuton", serif`,
-                  fontSize:"24px"
+									fontFamily: `"Neuton", serif`,
+									fontSize: "24px",
 								}}
 								name='description'
 								id='w3review'
