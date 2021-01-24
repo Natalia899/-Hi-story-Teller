@@ -159,7 +159,17 @@ function AddSuggestion(props) {
 							</Grid>
 						</MuiPickersUtilsProvider>
 					</div>
-					<div for='w3review'>Description</div>
+					<div
+						style={{
+							fontSize: "1.5em",
+							letterSpacing: "0.2em",
+							fontWeight: "lighter",
+							fontFamily: `"Neuton", serif`,
+						}}
+						for='w3review'
+					>
+						Description
+					</div>
 					<div
 						style={{
 							display: "grid",
@@ -169,9 +179,14 @@ function AddSuggestion(props) {
 					>
 						<>
 							<textarea
+								style={{
+									fontWeight: "lighter",
+                  fontFamily: `"Neuton", serif`,
+                  fontSize:"24px"
+								}}
 								name='description'
 								id='w3review'
-								rows='25'
+								rows='15'
 								cols='80'
 								value={inputs.description}
 								onChange={inputsHandler}
