@@ -15,6 +15,7 @@ import Signup from './components/authorization/SignUp'
 import Event from './components/events/Event';
 import QuizStart from './components/quiz/QuizStart';
 import QuizQuestion from './components/quiz/QuizQuestion';
+import EndGame from './components/quiz/EndGame'
 
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
     	<Route exact path='/verifySuggestion' component={VerifySuggest} />
       <Route exact path="/quiz" component={QuizStart} />
       <Route exact path="/quiz/:eventId" component={QuizQuestion} />
+      <Route exact path="/endGame" component={EndGame} />
     </Router>
   );
 

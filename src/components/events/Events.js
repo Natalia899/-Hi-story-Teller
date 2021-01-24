@@ -9,7 +9,6 @@ function Events(props){
     let {events} = props.EventsStore
 
     console.log(events)
-
     
     return(
         <div>

@@ -7,24 +7,25 @@ export class EventsStore {
 		this.dateRange = [1600, 2000];
 		this.countries = [];
 		this.currentSuggestion = {};
-		this.quiz = [];
+        this.quiz = [];
+        this.score = {}
 
 		makeObservable(this, {
 			events: observable,
 			user: observable,
 			dateRange: observable,
 			countries: observable,
-			currentSuggestion: observable,
+            currentSuggestion: observable,
+            score: observable,
 			eventsRender: action,
 			setDateRange: action,
 			addCountriesToStore: action,
 			currentSuggestionFunction: action,
 			approveSuggestion: action,
-
 			deleteSuggestion: action,
 			quiz:observable,
-			getQuiz: action
-
+            getQuiz: action,
+            quizScore: action,
 		});
 	}
 
@@ -63,12 +64,12 @@ export class EventsStore {
 			}
 		}
 		console.log(this.events);
-
+    };
+    
     addingComment = async (newComment, id) => {
         await axios.put(`http://localhost:4200/comment/${id}`, newComment)
     }
 
-	};
 	approveSuggestion = async (id) => {
 		await axios.put(`http://localhost:4200/event/${id}`);
 	};
@@ -79,7 +80,11 @@ export class EventsStore {
 	getQuiz = async () => {
 	let result = await axios.get('http://localhost:4200/quiz')
 	this.quiz = result.data
-
-	}
+    };
+    
+    quizScore = (score) => {
+        this.score = score
+        console.log(this.score)
+    }
 
 }
