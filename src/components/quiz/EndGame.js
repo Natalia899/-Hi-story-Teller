@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { useEffect, useState } from 'react';
 
-
-
 function EndGame(props) {
     console.log(props.EventsStore.score)
     const {score} = props.EventsStore

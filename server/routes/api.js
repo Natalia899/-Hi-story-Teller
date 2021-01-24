@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const Event = require("../models/event");
 const User = require("../models/user");
 const data = require("./data");
@@ -106,7 +105,9 @@ router.get('/suggestions', async (req, res) => {
     res.send(suggestions)
 })
 
-
+router.get("/", (req, res) => {
+    res.send({ response: "I am alive" }).status(200);
+  });
 
 module.exports = router
 

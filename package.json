@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "date-fns": "^2.16.1",
     "express": "^4.17.1",
+    "http": "0.0.1-security",
     "mobx": "^6.0.4",
     "mobx-react": "^7.0.5",
     "moment": "^2.29.1",
@@ -27,6 +28,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "react-voice-components": "^1.0.0",
+    "socket.io": "^3.1.0",
+    "socket.io-client": "^3.1.0",
     "three": "^0.124.0",
     "web-vitals": "^0.2.4"
   },
