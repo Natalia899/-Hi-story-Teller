@@ -5,7 +5,7 @@ const api = require('./server/routes/api')
 const mongoose = require('mongoose')
 const app = express()
 const path = require('path')
-const app = express()
+
 
 mongoose.connect('mongodb://localhost/historyEventsDB', { useNewUrlParser: true, useUnifiedTopology: true })
 
