@@ -3,7 +3,7 @@ const router = express.Router();
 const Event = require("../models/event");
 const User = require("../models/user");
 const data = require("./data");
-const cors = require('cors');
+const cors = require("cors");
 
 
 
@@ -106,9 +106,5 @@ router.get('/suggestions', async (req, res) => {
     res.send(suggestions)
 })
 
-router.get("/", (req, res) => {
-    res.status(200).json("i am alive")
-  });
 
-module.exports = router
-
+module.exports = router;
