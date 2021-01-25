@@ -8,10 +8,11 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
+import axios from "axios"
+const socketIOClient = require('socket.io-client');
+const ENDPOINT = 'ws://localhost:4200';
 
-
-function QuizQuestion(props) {
-
+function QuizSocket(props) {
 	const [counter, setCounter] = useState(1)
 	const [score, setScore] = useState({})
 
@@ -22,7 +23,6 @@ function QuizQuestion(props) {
 
 	const inputHandler = (event) => {
 		const choice = event.target.value
-		console.log(event.target.value)
 
 		const result = eventQuestions[counter - 1].answerOptions.
 			find(ans => ans.answer === choice).isCorrect
@@ -30,12 +30,23 @@ function QuizQuestion(props) {
 			let newScore = { ...score }
 			newScore[counter] = 1
 			setScore(newScore)
+const socket = socketIOClient(ENDPOINT)
+socket.emit('increaseUserScore', props.EventsStore.user._id)
+
+
 		} else {
 			let newScore = { ...score }
 			newScore[counter] = 0
 			setScore(newScore)
 		}
 	}
+
+	// useEffect(() => {
+	// 	const socket = socketIOClient(ENDPOINT)
+	// 	const { _id, username } = props.EventsStore.user
+	// 	socket.emit("addUser", { _id, username })
+	// }, [])
+
 
 	const quizScore = () => {
 		props.EventsStore.quizScore(score)
@@ -46,6 +57,9 @@ function QuizQuestion(props) {
 	const checkAnswer = () => {
 		setCounter(counter + 1)
 	}
+
+
+
 
 	return (
 		<div>
@@ -61,7 +75,7 @@ function QuizQuestion(props) {
 			</FormControl>
 			<div>
 				{counter === 10 ?
-					<Link to="/endGame">
+					<Link to="/endGameSocket">
 						<button onClick={quizScore}>End Game</button>
 					</Link> : <button onClick={checkAnswer}>Next</button>}
 			</div>
@@ -71,4 +85,4 @@ function QuizQuestion(props) {
 
 }
 
-export default inject("EventsStore")(observer(QuizQuestion))
+export default inject("EventsStore")(observer(QuizSocket))

@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import React, { useEffect, useState } from 'react';
@@ -53,39 +54,89 @@ function Event(props) {
         setInput("")
     }
 
-    const classes = useStyles();
 
-    return (
-        <div className="idan">
-            <div className={classes.root}>
-                <Link to="/events" >
-                    <Button variant="contained" color="primary">
-                        Back
-                    </Button>
-                </Link>
-            </div>
+	const classes = useStyles();
 
-            <h1>{event.title}</h1>
-            <h2> {event.startDate} - {event.endDate}</h2>
+	return (
+		<div className='container'>
+			<div className={classes.root}>
+				<Link to='/events'>
+					<Button
+						style={{
+							marginTop: "1em",
+							marginLeft: "1em",
+						}}
+						variant='contained'
+						color='primary'
+					>
+						Back
+					</Button>
+				</Link>
+			</div>
 
-            <div className="gallery">
-                <div id="carousel">
-                    {event.gallery.map(image => {
-                        return (
-                            <figure>
-                                <div>
-                                    <img src={image.imageURL} alt="" width="300px" height="300px" />
-                                    <figcaption>{image.imageTitle}</figcaption>
-                                </div>
-                            </figure>
-                        )
-                    })}
-                </div>
-            </div>
+			<h1
+				style={{
+					color: "rgba(80,80,80,1)",
+				}}
+			>
+				{event.title}
+			</h1>
+			<h2
+				style={{
+					color: "rgba(80,80,80,0.6)",
+				}}
+			>
+				{event.startDate} - {event.endDate}
+			</h2>
 
-            <p className="description">
-                {event.description}
-            </p>
+			<div className='gallery'>
+				<div id='carousel'>
+					{event.gallery.map((image) => {
+						return (
+							<figure
+								style={{
+									display: "grid",
+									justifyContent: "center",
+									alignItems: "center",
+									width: "350px",
+									height: "350px",
+									backgroundImage: `url(${image.imageURL})`,
+									backgroundSize: "cover",
+									backgroundPosition: "center",
+									outline: "1px solid",
+								}}
+							>
+								<h2
+									style={{
+										display: "grid",
+										height: "100%",
+										color: "rgba(80,80,80,1)",
+									}}
+								>
+									{image.imageTitle}
+								</h2>
+							</figure>
+						);
+					})}
+				</div>
+			</div>
+
+			<p
+				style={{
+					display: "grid",
+					justifyContent: "start",
+					fontSize: "1.4em",
+					lineHeight: "1.4em",
+					fontFamily: `"Neuton", serif`,
+					paddingLeft: "9em",
+					fontWeight: "lighter",
+					color: "rgba(80,80,80,1)",
+					maxWidth: "1000px",
+				}}
+				className='description'
+			>
+				{event.description}
+			</p>
 
             <div className={classes.root}>
                 <Accordion>
@@ -150,4 +201,4 @@ function Event(props) {
     )
 }
 
-export default inject("EventsStore")(observer(Event))
+export default inject("EventsStore")(observer(Event));
