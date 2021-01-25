@@ -4,19 +4,23 @@ export class EventsStore {
 	constructor() {
 		this.events = [];
 		this.user = null;
+		
 		this.dateRange = [1600, 2000];
 		this.countries = [];
 		this.currentSuggestion = {};
         this.quiz = [];
-        this.score = {}
+		this.score = {};
+	
 
 		makeObservable(this, {
 			events: observable,
 			user: observable,
+		
 			dateRange: observable,
 			countries: observable,
             currentSuggestion: observable,
-            score: observable,
+			score: observable,
+			
 			eventsRender: action,
 			setDateRange: action,
 			addCountriesToStore: action,

@@ -5,6 +5,8 @@ const User = require("../models/user");
 const data = require("./data");
 const cors = require('cors');
 
+
+
 // data.forEach((event) => {
 // 	let newEvent = new Event({
 // 		userName: event.userName,
@@ -71,7 +73,6 @@ router.post('/signUp', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
-    console.log(req.body)
     let relUser = await User.findOne({ username, password})
     res.send(relUser)
 })
@@ -106,7 +107,7 @@ router.get('/suggestions', async (req, res) => {
 })
 
 router.get("/", (req, res) => {
-    res.send({ response: "I am alive" }).status(200);
+    res.status(200).json("i am alive")
   });
 
 module.exports = router
