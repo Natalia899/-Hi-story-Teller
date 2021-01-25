@@ -1,19 +1,18 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
-import TextField from "@material-ui/core/TextField";
 import "date-fns";
 import "../Styles/VerifySuggestions.css";
-import Button from "@material-ui/core/Button";
-import { set } from "mobx";
+import { InputsField } from "./VerifySuggestionComponents/VeifyInputs";
+import { UploadImages } from "./VerifySuggestionComponents/UploadImages";
+import { RendererImages } from "./VerifySuggestionComponents/RendererImages";
+import { VerifyButtons } from "./VerifySuggestionComponents/VerifyButtons";
 
 const VerifySuggest = inject("EventsStore")(
 	observer((props) => {
 		const [suggestion, setSuggestion] = useState({});
-		const [descriptionImage, setDescriptionImage] = useState("");
+		const [descriptionImage] = useState("");
 		const [URLImage, setURLImage] = useState("");
 		useEffect(() => {
 			setSuggestion(props.EventsStore.currentSuggestion);
@@ -29,8 +28,8 @@ const VerifySuggest = inject("EventsStore")(
 			}
 			setSuggestion(obj);
 		};
-		const url = "https://api.cloudinary.com/v1_1/domephsm4/image/upload"; // link to cloudinary
-		const preset = "natalia"; // where we save all the images // url
+		const url = "https://api.cloudinary.com/v1_1/domephsm4/image/upload";
+		const preset = "natalia";
 
 		return (
 			<div>
@@ -39,55 +38,11 @@ const VerifySuggest = inject("EventsStore")(
 					<Container maxWidth='sm'>
 						<h2>Administrator Editor</h2>
 						<hr />
-
-						<div
-							style={{
-								display: "grid",
-								justifyItems: "start",
-								width: "100vw",
-							}}
-						>
-
-
-							<div className='inputs-field-container'>
-								<TextField
-									className='input-field'
-									name='title'
-									id='title'
-									label='Title'
-									value={suggestion.title}
-									onChange={handleInputChange}
-								/>
-								<br />
-								<TextField
-									className='input-field'
-									name='countries'
-									id='countries-input'
-									label='Country'
-									value={suggestion.countries}
-									onChange={handleInputChange}
-								/>
-								<br />
-								<TextField
-									className='input-field'
-									name='startDate'
-									type='nubmer'
-									id='startDate'
-									label='StartDate'
-									value={suggestion.startDate}
-									onChange={handleInputChange}
-								/>
-								<br />
-								<TextField
-									className='input-field'
-									name='endDate'
-									type='nubmer'
-									id='endDate'
-									label='EndDate'
-									value={suggestion.endDate}
-									onChange={handleInputChange}
-								/>
-							</div>
+						<div>
+							<InputsField
+								suggestion={suggestion}
+								handleInputChange={handleInputChange}
+							/>
 							<div for='w3review'>
 								<h3>Description</h3>
 							</div>
@@ -106,153 +61,22 @@ const VerifySuggest = inject("EventsStore")(
 									></textarea>
 								</div>
 								<div className='sapce-and-gap'>
-									<TextField
-										className='input-file'
-										onChange={({ target }) => {
-											setURLImage(target.files[0]);
-										}}
-										type='file'
+									<UploadImages
+										setURLImage={setURLImage}
+										descriptionImage={descriptionImage}
+										URLImage={URLImage}
+										preset={preset}
+										url={url}
+										suggestion={suggestion}
+										setSuggestion={setSuggestion}
 									/>
-									<TextField
-										className='imageDescripation-input'
-										onChange={({ target }) =>
-											setDescriptionImage(target.value)
-										}
-										value={descriptionImage}
-										type='text'
-										placeholder='Description'
+									<RendererImages
+										suggestion={suggestion}
+										setSuggestion={setSuggestion}
 									/>
-									<Button
-										id='upload-button'
-										onClick={async () => {
-											const formData = new FormData();
-											formData.append("file", URLImage); // file equls to type
-											formData.append("upload_preset", preset);
-
-											try {
-												const res = await axios.post(
-													url,
-													formData
-												);
-												const imageUrl = res.data.secure_url;
-												let obj = { ...suggestion };
-												obj.gallery.push({
-													id: res.data.public_id,
-													imageTitle: descriptionImage,
-													imageURL: imageUrl,
-												});
-												setSuggestion(obj);
-											} catch (err) {
-												console.log(err);
-											}
-										}}
-									>
-										Upload
-									</Button>
-									<div
-										style={{
-											display: "grid",
-											gridTemplateColumns: "repeat(2,1fr)",
-											gap: "1em",
-										}}
-									>
-										{suggestion.gallery &&
-											suggestion.gallery.map((m, index) => (
-												<div>
-													<input
-														onChange={({ target }) => {
-															let obj = {
-																...suggestion,
-															};
-															obj.gallery[
-																index
-															].imageTitle =
-																target.value;
-															obj.gallery[
-																index
-															].imageURL = m.imageURL;
-															setSuggestion(obj);
-														}}
-														value={m.imageTitle}
-														type='text'
-														style={{
-															width: "150px",
-														}}
-													/>
-													<br />
-
-													<img
-														style={{
-															marginRight: "1.2em",
-														}}
-														width='150px'
-														height='150px'
-														src={m.imageURL}
-														alt=''
-													/>
-
-													<br />
-
-													<Button
-														style={{
-															backgroundColor:
-																"rgba(200,200,200,0.8)",
-														}}
-														onClick={() => {
-															let obj = {
-																...suggestion,
-															};
-															obj.gallery.splice(
-																index,
-																1
-															);
-															setSuggestion(obj);
-														}}
-													>
-														DELETE
-													</Button>
-												</div>
-											))}
-									</div>
 								</div>
 							</div>
-							<div
-								sytle={{
-									display: "grid",
-									gridTemplateColumns: "repeat(2,1fr)",
-								}}
-							>
-								<Link to='/suggestionsList'>
-									<Button
-										style={{
-											backgroundColor: "rgba(200,200,200,0.8)",
-											marginRight: "1em",
-										}}
-										onClick={() =>
-											props.EventsStore.approveSuggestion(
-												suggestion._id
-											)
-										}
-									>
-										APPROVE
-									</Button>
-								</Link>
-								<Link to='/suggestionsList'>
-									<Button
-										style={{
-											backgroundColor: "rgba(200,200,200,0.8)",
-											marginRight: "1em",
-										}}
-										onClick={() =>
-											props.EventsStore.deleteSuggestion(
-												suggestion._id
-											)
-										}
-									>
-										Reject
-									</Button>
-								</Link>
-							</div>
+							<VerifyButtons suggestion={suggestion} />
 						</div>
 					</Container>
 				</React.Fragment>

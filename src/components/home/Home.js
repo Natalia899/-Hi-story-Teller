@@ -5,8 +5,7 @@ import {MyGlobe} from './WorldMap'
 import HomeButton from './HomeButton'
 import StarIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom'
-const socketIOClient = require('socket.io-client');
-const ENDPOINT = 'ws://localhost:4200'
+
 
 export function Home(){
 
