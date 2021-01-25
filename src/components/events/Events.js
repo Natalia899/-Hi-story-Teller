@@ -7,8 +7,6 @@ import { useEffect, useState } from "react";
 function Events(props) {
 	let { events } = props.EventsStore;
 
-	console.log(events);
-
 	return (
 		<div className='collections-container'>
 			{events.map((event) => {

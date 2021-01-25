@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +14,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { inject, observer } from 'mobx-react';
 import { Redirect } from 'react-router-dom'
+// const socketIOClient = require('socket.io-client');
+// const ENDPOINT = 'ws://localhost:4200';
+
 
 function Copyright() {
     return (
@@ -52,9 +55,13 @@ function Login(props) {
     const [password, setPassword] = useState("")
 
     const userLogin = async () => {
-        console.log(username, password)
         await props.EventsStore.userLogin({ username, password })
     }
+
+    // useEffect(() => {
+    //     const socket = socketIOClient(ENDPOINT)
+    //     socket.emit("join", {username, password})
+    // },[username, password])
 
     return (
         <Container component="main" maxWidth="xs">

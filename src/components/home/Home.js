@@ -1,10 +1,11 @@
-
+import React, { useEffect, useState } from "react";
 import TimeLine from './TimeLine'
 import NavBar from '../navBar/NavBar'
 import {MyGlobe} from './WorldMap'
 import HomeButton from './HomeButton'
 import StarIcon from '@material-ui/icons/Star';
 import { Link } from 'react-router-dom'
+
 
 export function Home(){
 
@@ -22,7 +23,7 @@ export function Home(){
             <div>
                 <HomeButton />
             </div>
-              <Link to="/quiz"><StarIcon /></Link>
+              <Link to='/quiz'><StarIcon /></Link>
         </div>
     )
 }

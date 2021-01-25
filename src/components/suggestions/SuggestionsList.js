@@ -29,12 +29,9 @@ const SuggestionsList = inject("EventsStore")(
 
 		const currentSuggetstion = (title) => {
 			const data = suggestionsList.find((f) => f.title === title);
-			console.log(data);
 			props.EventsStore.currentSuggestionFunction(data);
-			console.log(props.EventsStore.currentSuggestion);
 		};
 
-		console.log(suggestionsList);
 		const addStyleTo = useStyles();
 
 		return (
