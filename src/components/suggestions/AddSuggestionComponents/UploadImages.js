@@ -59,6 +59,7 @@ function UploadImages(props) {
 	const classes = useStyles();
 	return (
 		<div>
+			{" "}
 			Upload images (optional):
 			<div className='uploadImage'>
 				<input
@@ -88,29 +89,15 @@ function UploadImages(props) {
 					Upload
 				</Button>
 			</div>
-			<div
-				style={{
-					display: "grid",
-					gridTemplateColumns: "repeat(2,1fr)",
-                    gap: "2em",
-                    width: "150px",
-				}}
-			>
-				{gallery &&
-					gallery.map((image) => {
-						return (
-							<div>
-								<p>{image.imageTitle}</p>
-								<img
-									width='150px'
-									height='150px'
-									src={image.imageURL}
-									alt=''
-								/>
-							</div>
-						);
-					})}
-			</div>
+			{gallery &&
+				gallery.map((image) => {
+					return (
+						<div>
+							<img width='300px' height='300px' src={image.imageURL} alt='' />
+							<p>{image.imageTitle}</p>
+						</div>
+					);
+				})}
 		</div>
 	);
 }

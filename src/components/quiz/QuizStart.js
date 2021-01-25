@@ -12,22 +12,17 @@ import Button from '@material-ui/core/Button';
 function QuizStart(props) {
   console.log(props.EventsStore.quiz);
   const [eventId, setEventId] = useState('');
-  const [players, setPlayers] = useState(null)
-  const [redirect, setRedirect] = useState(false)
+  const [players, setPlayers] = useState(1)
+  // const [redirect, setRedirect] = useState(false)
 
   const handleChange = (event) => {
     let result = event.target.value
     setEventId(result);
   };
 
-
   useEffect(() => {
     props.EventsStore.getQuiz()
   }, [])
-
-  // const startGame = () => {
-
-  // }
 
   return (<div>
 
@@ -42,20 +37,20 @@ function QuizStart(props) {
       </RadioGroup>
     </FormControl>
 
-    <FormControl component="fieldset">
+    {/* <FormControl component="fieldset">
       <RadioGroup aria-label="gender" name="gender1" value={players} onChange={(e) => setPlayers(e.target.value)}>
         <FormControlLabel value="1" control={<Radio />} label="1 Player" />
-        <FormControlLabel value="2" control={<Radio />} label="2 Players" />
-      </RadioGroup>
-    </FormControl>
+        {/* <FormControlLabel value="2" control={<Radio />} label="2 Players" /> */}
+    {/* </RadioGroup>
+    </FormControl> */}
 
-    <Button onClick={()=>setRedirect(true)}> Play</Button>
+    <Button onClick={() => setRedirect(true)}> Play</Button>
 
-    {players == 2 && redirect ? <Redirect to={`/QuizSocket/${eventId}`} /> : null}
-    {players == 1 && redirect ? <Redirect to={`/QuizQuestion/${eventId}`} /> : null}
-    {/* <Link to={`/quiz/${eventId}`}><Button  variant="contained" color="primary">
+    {/* {players == 2 && redirect ? <Redirect to={`/matchType`} /> : null}
+    {players == 1 && redirect ? <Redirect to={`/QuizQuestion/${eventId}`} /> : null} */}
+    <Link to={`/quiz/${eventId}`}><Button variant="contained" color="primary">
       PLAY
-    </Button> </Link> */}
+</Button> </Link>
   </div>)
 
 }
