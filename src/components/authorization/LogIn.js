@@ -14,8 +14,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { inject, observer } from 'mobx-react';
 import { Redirect } from 'react-router-dom'
-const socketIOClient = require('socket.io-client');
-const ENDPOINT = 'ws://localhost:4200';
+// const socketIOClient = require('socket.io-client');
+// const ENDPOINT = 'ws://localhost:4200';
 
 
 function Copyright() {
@@ -58,10 +58,10 @@ function Login(props) {
         await props.EventsStore.userLogin({ username, password })
     }
 
-    useEffect(() => {
-        const socket = socketIOClient(ENDPOINT)
-        socket.emit("join", {username, password})
-    },[username, password])
+    // useEffect(() => {
+    //     const socket = socketIOClient(ENDPOINT)
+    //     socket.emit("join", {username, password})
+    // },[username, password])
 
     return (
         <Container component="main" maxWidth="xs">
