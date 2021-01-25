@@ -28,7 +28,7 @@ export const MyGlobe = inject("EventsStore")(
 			setAnimetions(animation);
 		}, [marker]);
 
-		const clearCountriesFromStore = () => {
+		const clearCountriesFromStore = () => {	
 			props.EventsStore.countries = [];
 		};
 		const addCountriesToStore = (marker) => {

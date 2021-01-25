@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import { observer, inject } from "mobx-react";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import "../Styles/SuggestionList.css";
 const useStyles = makeStyles({
 	table: {
 		minWidth: 650,
@@ -36,33 +37,84 @@ const SuggestionsList = inject("EventsStore")(
 		return (
 			<div>
 				<Link to='/home'>
-					<Button>Home</Button>
+					<Button
+						style={{
+							backgroundColor: "rgba(200,200,200,0.6)",
+							margin:"1em"
+						}}
+					>
+						Home
+					</Button>
 				</Link>
 				<TableContainer component={Paper}>
 					<Table className={addStyleTo.table} aria-label='simple table'>
 						<TableHead>
 							<TableRow>
-								<TableCell>userName</TableCell>
-								<TableCell align='right'>Title</TableCell>
-								<TableCell align='right'>Submit</TableCell>
+								<TableCell
+									style={{
+										fontSize: "2em",
+										color: "rgba(200,200,200,0.8)",
+									}}
+								>
+									User Name
+								</TableCell>
+								<TableCell
+									style={{
+										fontSize: "2em",
+										color: "rgba(200,200,200,0.8)",
+									}}
+									align='right'
+								>
+									Title
+								</TableCell>
+								<TableCell
+									style={{
+										fontSize: "2em",
+										color: "rgba(200,200,200,0.8)",
+									}}
+									align='right'
+								>
+									Submit
+								</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
 							{suggestionsList.map((row) => (
 								<TableRow key={row.title}>
-									<TableCell component='th' scope='row'>
+									<TableCell
+										style={{
+											fontSize: "1.4em",
+											fontWeight: "bold",
+											color: "rgba(60,60,60,1)",
+										}}
+										component='th'
+										scope='row'
+									>
 										{row.userName}
 									</TableCell>
-									<TableCell align='right'>{row.title}</TableCell>
+									<TableCell
+										style={{
+											fontSize: "1.4em",
+											fontWeight: "lighter",
+											color: "rgba(60,60,60,1)",
+										}}
+										align='right'
+									>
+										{row.title}
+									</TableCell>
 									<TableCell align='right'>
 										<Link to='/verifySuggestion'>
-											<button
+											<Button
+												style={{
+													backgroundColor:
+														"rgba(200,200,200,0.8)",
+												}}
 												onClick={() =>
 													currentSuggetstion(row.title)
 												}
 											>
 												Check Suggestion
-											</button>
+											</Button>
 										</Link>
 									</TableCell>
 								</TableRow>
