@@ -1,7 +1,7 @@
 #carousel{
     display:grid;
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     transform-style: preserve-3d;
     animation: rotation 25s infinite linear;
 }
@@ -19,7 +19,6 @@
     top: 10px;
     background: white;
     overflow: hidden;
-    /* border: solid 5px black; */
     
 }
 
@@ -76,7 +75,3 @@ h2{
     line-height: 20px;
 }
 
-.idan{
-    display: grid;
-    justify-content: center;
-}
