@@ -8,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import "date-fns";
 import "../Styles/VerifySuggestions.css";
 import Button from "@material-ui/core/Button";
+import { set } from "mobx";
 
 const VerifySuggest = inject("EventsStore")(
 	observer((props) => {
@@ -38,6 +39,7 @@ const VerifySuggest = inject("EventsStore")(
 					<Container maxWidth='sm'>
 						<h2>Administrator Editor</h2>
 						<hr />
+
 						<div
 							style={{
 								display: "grid",
@@ -45,6 +47,8 @@ const VerifySuggest = inject("EventsStore")(
 								width: "100vw",
 							}}
 						>
+
+
 							<div className='inputs-field-container'>
 								<TextField
 									className='input-field'
