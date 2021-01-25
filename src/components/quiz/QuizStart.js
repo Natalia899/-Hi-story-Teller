@@ -54,8 +54,8 @@ function QuizStart(props) {
     {players == 2 && redirect ? <Redirect to={`/QuizSocket/${eventId}`} /> : null}
     {players == 1 && redirect ? <Redirect to={`/QuizQuestion/${eventId}`} /> : null}
     {/* <Link to={`/quiz/${eventId}`}><Button  variant="contained" color="primary">
-  PLAY
-</Button> </Link> */}
+      PLAY
+    </Button> </Link> */}
   </div>)
 
 }
