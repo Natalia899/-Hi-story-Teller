@@ -13,7 +13,6 @@ const socketIOClient = require('socket.io-client');
 const ENDPOINT = 'ws://localhost:4200';
 
 function QuizSocket(props) {
-	console.log('are u here??????')
 	const [counter, setCounter] = useState(1)
 	const [score, setScore] = useState({})
 
@@ -24,7 +23,6 @@ function QuizSocket(props) {
 
 	const inputHandler = (event) => {
 		const choice = event.target.value
-		console.log(event.target.value)
 
 		const result = eventQuestions[counter - 1].answerOptions.
 			find(ans => ans.answer === choice).isCorrect
@@ -32,6 +30,10 @@ function QuizSocket(props) {
 			let newScore = { ...score }
 			newScore[counter] = 1
 			setScore(newScore)
+const socket = socketIOClient(ENDPOINT)
+socket.emit('increaseUserScore', props.EventsStore.user._id)
+
+
 		} else {
 			let newScore = { ...score }
 			newScore[counter] = 0
@@ -39,14 +41,11 @@ function QuizSocket(props) {
 		}
 	}
 
-	useEffect(() => {
-		console.log(props.EventsStore.user)
-		const socket = socketIOClient(ENDPOINT)
-		const { _id, username } = props.EventsStore.user
-		console.log(_id)
-		console.log(username)
-		socket.emit("addUser", { _id, username })
-	}, [])
+	// useEffect(() => {
+	// 	const socket = socketIOClient(ENDPOINT)
+	// 	const { _id, username } = props.EventsStore.user
+	// 	socket.emit("addUser", { _id, username })
+	// }, [])
 
 
 	const quizScore = () => {
@@ -59,16 +58,7 @@ function QuizSocket(props) {
 		setCounter(counter + 1)
 	}
 
-	// const [response, setResponse] = useState("");
 
-	// console.log(response)
-	// useEffect(() => {
-	// 	const socket = socketIOClient(ENDPOINT);
-	// 	console.log(socket)
-	// 	socket.on("FromAPI", data => {
-	// 		setResponse(data); 
-	// 	})
-	// }, []);
 
 
 	return (
@@ -85,7 +75,7 @@ function QuizSocket(props) {
 			</FormControl>
 			<div>
 				{counter === 10 ?
-					<Link to="/endGame">
+					<Link to="/endGameSocket">
 						<button onClick={quizScore}>End Game</button>
 					</Link> : <button onClick={checkAnswer}>Next</button>}
 			</div>
