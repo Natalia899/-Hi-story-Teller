@@ -4,6 +4,7 @@ const router = express.Router();
 class Socket {
     constructor() {
         this.users = []
+        this.rooms = {}
 
     }
 
@@ -18,7 +19,8 @@ class Socket {
     }
 
     increaseUserScore(id) {
-        this.users.find(user => user.id === id).score++
+        this.users.find(user => user._id === id).score++
+
     }
 
     removeUser(id) {
@@ -26,6 +28,28 @@ class Socket {
 
         return this.users.splice(index, 1)[0]
     }
+
+    createRoom({inputValue, id}) {
+        console.log(this.users)
+        let user = this.users.find(m => m._id == id)
+        console.log(user)
+        console.log(id)
+        this.rooms[inputValue] = [user]
+        console.log(this.rooms)
+    }
+
+    joinRoom(inputValue, id, username, score) {
+        if (this.rooms[inputValue] && this.rooms[inputValue].length < 2) {
+            let user = { id, username, score }
+            this.rooms[inputValue].push(user)
+        } else if(this.rooms[inputValue] && this.rooms[inputValue].length > 2) {
+            return { error: "Room is full " }
+        }else{
+            return {error: `This room doesn't exist`}
+        }
+
+    }
+
 
 
 
