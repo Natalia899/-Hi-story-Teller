@@ -3,7 +3,9 @@ const router = express.Router();
 const Event = require("../models/event");
 const User = require("../models/user");
 const data = require("./data");
-const cors = require('cors');
+const cors = require("cors");
+
+
 
 // data.forEach((event) => {
 // 	let newEvent = new Event({
@@ -71,7 +73,6 @@ router.post('/signUp', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
-    console.log(req.body)
     let relUser = await User.findOne({ username, password})
     res.send(relUser)
 })
@@ -105,9 +106,5 @@ router.get('/suggestions', async (req, res) => {
     res.send(suggestions)
 })
 
-router.get("/", (req, res) => {
-    res.send({ response: "I am alive" }).status(200);
-  });
 
-module.exports = router
-
+module.exports = router;

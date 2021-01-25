@@ -1,0 +1,9 @@
+.collection-container {
+	display: grid;
+	margin: 2em;
+}
+
+.collections-container {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
