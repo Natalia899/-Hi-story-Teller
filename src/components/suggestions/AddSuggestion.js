@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+
 function AddSuggestion(props) {
 	const [selectedStartDate, setStartSelectedDate] = useState(new Date());
 	const [selectedEndDate, setEndSelectedDate] = useState(new Date());
@@ -194,7 +195,7 @@ function AddSuggestion(props) {
 						</>
 						<>
 							<UploadImages updateGallery={updateGallery} />
-							<Button
+							<Link to='/home'><Button
 								style={{
 									width: "3em",
 								}}
@@ -202,7 +203,7 @@ function AddSuggestion(props) {
 								variant='contained'
 							>
 								Send
-							</Button>
+							</Button></Link>
 						</>
 					</div>
 				</div>
