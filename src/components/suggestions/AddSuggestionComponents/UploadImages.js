@@ -99,5 +99,6 @@ function UploadImages(props) {
                 })}
         </div>
     );
+
 }
 export default inject("EventsStore")(observer(UploadImages));

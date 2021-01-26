@@ -196,6 +196,7 @@ function AddSuggestion(props) {
 						<>
 							<UploadImages updateGallery={updateGallery} />
 							<Link to='/home'><Button
+
                                 style={{
                                     width: "3em",
                                 }}
@@ -204,6 +205,7 @@ function AddSuggestion(props) {
                             >
                                 Send
                             </Button></Link>
+
 						</>
 					</div>
 				</div>

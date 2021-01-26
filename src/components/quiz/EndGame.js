@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import { Button } from "@material-ui/core";
@@ -42,3 +43,4 @@ function EndGame(props) {
 	);
 }
 export default inject("EventsStore")(observer(EndGame));
+
