@@ -4,6 +4,8 @@ const Event = require("../models/event");
 const User = require("../models/user");
 const data = require("./data");
 const cors = require("cors");
+
+
 const bcrypt = require('bcrypt')
 
 
@@ -71,6 +73,14 @@ router.post('/signUp', async (req, res) => {
     newUser.save()
     res.send(newUser)
 })
+
+
+
+// router.post('/login', async (req, res) => {
+//     const { username, password } = req.body
+//     let relUser = await User.findOne({ username, password})
+//     res.send(relUser)
+// })
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body

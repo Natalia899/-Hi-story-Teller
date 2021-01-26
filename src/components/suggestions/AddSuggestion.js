@@ -196,14 +196,16 @@ function AddSuggestion(props) {
 						<>
 							<UploadImages updateGallery={updateGallery} />
 							<Link to='/home'><Button
-								style={{
-									width: "3em",
-								}}
-								onClick={sendNewEvent}
-								variant='contained'
-							>
-								Send
-							</Button></Link>
+
+                                style={{
+                                    width: "3em",
+                                }}
+                                onClick={sendNewEvent}
+                                variant='contained'
+                            >
+                                Send
+                            </Button></Link>
+
 						</>
 					</div>
 				</div>
