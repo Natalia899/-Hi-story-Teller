@@ -26,12 +26,13 @@ function TimeLine(props) {
 	return (
 		<div className={classes.root}>
 			<div className='timeline-container'>
-				<div>
+				<div className="subContainer" >
 					<Typography id='range-slider' gutterBottom>
 						<h3 className='timeline-header' >Timeline</h3>
 					</Typography>
 
 					<Slider
+						className="slider"
 						style={{
 							color: "rgb(4,4,25)",
 							width: "70vw",

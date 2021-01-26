@@ -3,7 +3,7 @@ a {
 	color: rgb(54, 54, 54);
 }
 
-span {
+outerContainer > span {
 	font-family: "Bodoni Moda", serif;
 	font-size: 2em;
 }

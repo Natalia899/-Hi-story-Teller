@@ -47,6 +47,13 @@ function UploadImages(props) {
 		}
 	};
 
+	const removeImage = (title) => {
+	let index = gallery.findIndex(i=> i.title === title)
+	let tempGallery = [...gallery]
+	tempGallery.splice(index, 1)
+	setGallery(tempGallery)
+	}
+
 	useEffect(() => {
 		let tempGallery = [...gallery];
 		if (image.imageURL !== "") {
@@ -94,7 +101,7 @@ function UploadImages(props) {
 					return (
 						<div>
 							<img width='300px' height='300px' src={image.imageURL} alt='' />
-							<p>{image.imageTitle}</p>
+							<p>{image.imageTitle}</p> <button onClick={()=>removeImage(image.title)}>X</button>
 						</div>
 					);
 				})}
