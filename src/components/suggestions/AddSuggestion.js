@@ -5,8 +5,8 @@ import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
 import { inject, observer } from "mobx-react";
 import axios from "axios";
+import UploadImages from './AddSuggestionComponents/UploadImages'
 import { Link } from "react-router-dom";
-import UploadImages from "./UploadImages";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
