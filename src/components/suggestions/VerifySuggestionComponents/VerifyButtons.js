@@ -4,6 +4,7 @@ import "date-fns";
 import Button from "@material-ui/core/Button";
 import { inject, observer } from "mobx-react";
 
+
 export const VerifyButtons = inject("EventsStore")(observer((props) => {
 	return (
 		<>
@@ -24,3 +25,4 @@ export const VerifyButtons = inject("EventsStore")(observer((props) => {
 		</>
 	);
 }))
+

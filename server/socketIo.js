@@ -75,7 +75,4 @@ class Socket {
     // }
 }
 
-module.exports = Socket
-
-
-
+module.exports = Socket;

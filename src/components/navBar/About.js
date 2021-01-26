@@ -1,56 +1,63 @@
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import React, { Component } from "react";
 import { Button } from "@material-ui/core";
+import "../Styles/About.css";
+import NavBar from "./NavBar";
 
-const TEXT = `Hi story teller 
-I want to tell you why. 
-why history application.   
-in the internet we have so much things to learn 	
-we want to make are cliens have fun with learning  
-our clients give us some stuff to work on that we 
-will execute that in the most beutifall vertion. 
-think you...story teller`;
+const Text =
+	"HI STORY TELLER. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illumperspiciatis voluptatibus consequuntur nobis enim harum blanditiisducimus iusto, neque sed cum inventore. Voluptates a quae nihilrepellendus qui voluptate ad.";
+
+const SupportTextButton = "click to hear About us.";
+const SupportStopButton = "click to stop the speaker.";
+
+const Speaker = (text, voice) => {
+	window.responsiveVoice.speak(text, voice, { volume: 0.3 });
+};
+
+const StopSpeaker = () => {
+	window.responsiveVoice.cancel();
+};
 
 const About = () => {
 	return (
-		<div>
-			<Button
-				style={{
-					backgroundColor: "rgba(200,200,200,0.5)",
-					margin: "1em",
-				}}
-				onClick={() => window.responsiveVoice.speak(TEXT)}
-			>
-				Play
-			</Button>
-			<div
-				style={{
-					display: "grid",
-					justifyContent: "center",
-				}}
-			>
-				<div
-					style={{
-						display: "grid",
-						width: "70vw",
-						height: "100vh",
-						justifyContent: "center",
-					}}
-				>
-					<h1>Hi We (Hi)story teller</h1>
-					<hr
-						style={{
-							height: "1px",
-						}}
-					/>
-					<p>
-						(Hi)story teller I want to tell you why <br />
-						why history application. <br />
-						in the internet we have so much things to learn <br />
-						we want to make are cliens have fun with learning <br />
-						our clients give us some stuff to work on that we <br />
-						will execute that in the most beutifall vertion. <br />
-						TY...story teller
+		<div className='outerContainer'>
+			<NavBar />
+			<div className='container'>
+				<div className='textBorderContainer'>
+					<h1 className='mainHeader'>(Hi)Story Teller</h1>
+					<div className='buttonSpeakerContainer'>
+						<Button
+							onClick={() => Speaker(Text, "Australian Male")}
+							onMouseEnter={() =>
+								Speaker(SupportTextButton, "Australian Male")
+							}
+							className='speak'
+						>
+							Speak
+						</Button>
+						<Button
+							onClick={StopSpeaker}
+							className='stopSpeak'
+							onMouseEnter={() =>
+								Speaker(SupportStopButton, "Australian Male")
+							}
+						>
+							Stop
+						</Button>
+					</div>
+					<p className='p-1'>
+						<h3 className='header-1'>Little about us</h3>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
+						perspiciatis voluptatibus consequuntur nobis enim harum blanditiis
+						ducimus iusto, neque sed cum inventore. Voluptates a quae nihil
+						repellendus qui voluptate ad.
+					</p>
+					<p className='p-2'>
+						<h4 className='header-2'>Our Company</h4>
+						Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
+						perspiciatis voluptatibus consequuntur nobis enim harum blanditiis
+						ducimus iusto, neque sed cum inventore. Voluptates a quae nihil
+						repellendus qui voluptate ad.
 					</p>
 				</div>
 			</div>
