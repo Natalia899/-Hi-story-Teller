@@ -24,7 +24,7 @@ const NavBar = inject("EventsStore")(
 		};
 
 		return (
-			<div className={classes.root}>
+			<div className={`${classes.root} outerContainer`}>
 				<CssBaseline />
 				<AppBarComponent open={open} handleDrawerOpen={handleDrawerOpen} />
 				<Drawer
