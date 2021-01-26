@@ -37,7 +37,7 @@ function QuizStart(props) {
       </RadioGroup>
     </FormControl>
 
-    {/* <FormControl component="fieldset">
+     {/* <FormControl component="fieldset">
       <RadioGroup aria-label="gender" name="gender1" value={players} onChange={(e) => setPlayers(e.target.value)}>
         <FormControlLabel value="1" control={<Radio />} label="1 Player" />
         {/* <FormControlLabel value="2" control={<Radio />} label="2 Players" /> */}
