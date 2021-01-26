@@ -5,7 +5,7 @@ const User = require("../models/user");
 const data = require("./data");
 const cors = require("cors");
 
-
+const bcrypt = require('bcrypt')
 
 // data.forEach((event) => {
 // 	let newEvent = new Event({
@@ -71,10 +71,25 @@ router.post('/signUp', async (req, res) => {
     res.send(newUser)
 })
 
+
+
+// router.post('/login', async (req, res) => {
+//     const { username, password } = req.body
+//     let relUser = await User.findOne({ username, password})
+//     res.send(relUser)
+// })
+
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
-    let relUser = await User.findOne({ username, password})
-    res.send(relUser)
+    let relUser = await User.findOne({ username })
+    console.log(relUser)
+    bcrypt.compare(password, relUser.password, (err, result) => {
+        if (result) {
+            res.send(relUser)
+        } else {
+            res.send('Password is incorrect')
+        }
+    })
 })
 
 router.delete('/event/:id', async (req, res) => {

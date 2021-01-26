@@ -345,7 +345,7 @@ const data = [
 		entered the public consciousness as a cautionary tale about the perils of human hubris.
 		
 		Titanic:
-		The Titanic was the product of intense competition among rival shipping lines in the first
+		The Tfitanic was the product of intense competition among rival shipping lines in the first
 		half of the 20th century. In particular, the White Star Line found itself in a battle for
 		steamship primacy with Cunard, a venerable British firm with two standout ships that ranked
 		among the most sophisticated and luxurious of their time.

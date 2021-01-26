@@ -3,12 +3,26 @@ import { inject, observer } from "mobx-react";
 import Event from "./Event";
 import "../Styles/Events.css";
 import { useEffect, useState } from "react";
+import Button from '@material-ui/core/Button';
 
 function Events(props) {
 	let { events } = props.EventsStore;
 
 	return (
 		<div className='collections-container'>
+<Link to='/home'>
+					<Button
+						style={{
+							marginTop: "1em",
+							marginLeft: "1em",
+						}}
+						variant='contained'
+						color='primary'
+					>
+						Back
+					</Button>
+				</Link>
+
 			{events.map((event) => {
 				return (
 					<div className='collection-container'>
