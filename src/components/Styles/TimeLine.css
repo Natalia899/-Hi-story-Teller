@@ -18,6 +18,7 @@
 	font-weight: lighter;
 }
 
-span{
-	font-size: 12px !important;
+.slider > span{
+	font-size:12px;
+	
 }
