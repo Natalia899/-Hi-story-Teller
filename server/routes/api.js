@@ -4,7 +4,7 @@ const Event = require("../models/event");
 const User = require("../models/user");
 const data = require("./data");
 const cors = require("cors");
-
+const bcrypt = require('bcrypt')
 
 
 // data.forEach((event) => {
@@ -23,29 +23,30 @@ const cors = require("cors");
 // });
 
 let user1 = new User({
-	username: "Ben",
-	password: "1234",
-	type: "admin",
+    username: "Ben",
+    password: "1234",
+    type: "admin",
 });
 
 let user2 = new User({
-	username: "Rose",
-	password: "9874",
-	type: "guest",
+    username: "Rose",
+    password: "9874",
+    type: "guest",
 });
 
 const usersDB = [user1, user2];
 // usersDB.forEach(u=> u.save())
 
 router.post('/events', async (req, res) => {
-    const { countries, startDate, endDate} = req.body
+    const { countries, startDate, endDate } = req.body
     const events = []
-    for(let country of countries){
-        await Event.find({ 
+    for (let country of countries) {
+        await Event.find({
             approved: true,
             countries: { $in: [`${country}`] },
             startDate: { $gte: `${startDate}` },
-            endDate: { $lte: `${endDate}` } })
+            endDate: { $lte: `${endDate}` }
+        })
             .then(response => {
                 events.push(response)
             })
@@ -53,9 +54,9 @@ router.post('/events', async (req, res) => {
     res.send(events)
 })
 
-router.get('/quiz', async (req, res)=> {
+router.get('/quiz', async (req, res) => {
     const allEvents = await Event.find({})
-    let result = allEvents.map(event => { return {id: event._id, title: event.title, quiz: event.quiz}})
+    let result = allEvents.map(event => { return { id: event._id, title: event.title, quiz: event.quiz } })
     res.send(result)
 })
 
@@ -73,8 +74,15 @@ router.post('/signUp', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body
-    let relUser = await User.findOne({ username, password})
-    res.send(relUser)
+    let relUser = await User.findOne({ username })
+    console.log(relUser)
+    bcrypt.compare(password, relUser.password, (err, result) => {
+        if (result) {
+            res.send(relUser)
+        } else {
+            res.send('Password is incorrect')
+        }
+    })
 })
 
 router.delete('/event/:id', async (req, res) => {
@@ -102,7 +110,7 @@ router.put('/comment/:id', async (req, res) => {
 })
 
 router.get('/suggestions', async (req, res) => {
-    let suggestions = await Event.find({approved: false}).exec()
+    let suggestions = await Event.find({ approved: false }).exec()
     res.send(suggestions)
 })
 

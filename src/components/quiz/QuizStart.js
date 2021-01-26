@@ -44,7 +44,7 @@ function QuizStart(props) {
     {/* </RadioGroup>
     </FormControl> */}
 
-    <Button onClick={() => setRedirect(true)}> Play</Button>
+    {/* <Button onClick={() => setRedirect(true)}> Play</Button> */}
 
     {/* {players == 2 && redirect ? <Redirect to={`/matchType`} /> : null}
     {players == 1 && redirect ? <Redirect to={`/QuizQuestion/${eventId}`} /> : null} */}
